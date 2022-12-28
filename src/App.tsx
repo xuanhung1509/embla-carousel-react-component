@@ -2,6 +2,7 @@ import useMediaQuery from '@/hooks/useMediaQuery';
 import Carousel from '@/Carousel/Carousel';
 import CarouselSlide from '@/Carousel/CarouselSlide';
 import { PrevButton, NextButton } from '@/Carousel/CarouselButton';
+import './App.css';
 
 const MyPrevButton = () => (
   <PrevButton className='absolute top-4 right-16 flex h-10 w-10 items-center justify-center rounded-full bg-slate-300 px-4 py-2'>

@@ -1,9 +1,11 @@
 import { createContext, useContext } from 'react';
 
 type CarouselContextProps = {
+  slideGap: string;
+  canScrollPrev: boolean;
+  canScrollNext: boolean;
   scrollPrev: () => void;
   scrollNext: () => void;
-  slideGap: string;
 };
 
 const CarouselContext = createContext<CarouselContextProps | null>(null);

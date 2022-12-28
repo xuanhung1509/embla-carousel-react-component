@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import { forwardRef, useCallback, useMemo } from 'react';
+import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
 import { CarouselContext } from '@/Carousel/CarouselContext';
 
@@ -33,6 +33,9 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
   ) => {
     const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
+    const [canScrollPrev, setCanScrollPrev] = useState(false);
+    const [canScrollNext, setCanScrollNext] = useState(true);
+
     const scrollPrev = useCallback(() => {
       if (emblaApi) emblaApi.scrollPrev();
     }, [emblaApi]);
@@ -41,13 +44,29 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
 
+    useEffect(() => {
+      if (!emblaApi) return;
+
+      const handleSelect = () => {
+        if (!emblaApi) return;
+
+        setCanScrollPrev(emblaApi.canScrollPrev());
+        setCanScrollNext(emblaApi.canScrollNext());
+      };
+
+      emblaApi.on('select', handleSelect);
+      handleSelect();
+    }, [emblaApi]);
+
     const contextValue = useMemo(
       () => ({
         slideGap,
+        canScrollPrev,
+        canScrollNext,
         scrollPrev,
         scrollNext,
       }),
-      [slideGap, scrollNext, scrollPrev],
+      [slideGap, canScrollPrev, canScrollNext, scrollPrev, scrollNext],
     );
 
     return (

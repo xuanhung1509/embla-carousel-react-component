@@ -8,11 +8,17 @@ type PrevButtonProps = React.DetailedHTMLProps<
 
 const PrevButton = forwardRef<HTMLButtonElement, PrevButtonProps>(
   ({ children, ...otherProps }, ref) => {
-    const { scrollPrev } = useCarouselContext();
+    const { canScrollPrev, scrollPrev } = useCarouselContext();
 
     return (
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      <button ref={ref} type='button' onClick={scrollPrev} {...otherProps}>
+      <button
+        ref={ref}
+        type='button'
+        data-disabled={!canScrollPrev}
+        onClick={scrollPrev}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...otherProps}
+      >
         {children}
       </button>
     );
@@ -26,11 +32,17 @@ type NextButtonProps = React.DetailedHTMLProps<
 
 const NextButton = forwardRef<HTMLButtonElement, NextButtonProps>(
   ({ children, ...otherProps }, ref) => {
-    const { scrollNext } = useCarouselContext();
+    const { canScrollNext, scrollNext } = useCarouselContext();
 
     return (
-      // eslint-disable-next-line react/jsx-props-no-spreading, react/button-has-type
-      <button ref={ref} type='button' onClick={scrollNext} {...otherProps}>
+      <button
+        ref={ref}
+        type='button'
+        data-disabled={!canScrollNext}
+        onClick={scrollNext}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...otherProps}
+      >
         {children}
       </button>
     );
