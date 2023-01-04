@@ -1,6 +1,9 @@
 /* eslint-disable react/require-default-props */
 import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
-import useEmblaCarousel, { EmblaOptionsType } from 'embla-carousel-react';
+import useEmblaCarousel, {
+  EmblaOptionsType,
+  EmblaPluginType,
+} from 'embla-carousel-react';
 import { CarouselContext } from '@/Carousel/CarouselContext';
 
 type CarouselProps = React.DetailedHTMLProps<
@@ -10,6 +13,7 @@ type CarouselProps = React.DetailedHTMLProps<
   slidesPerView: number;
   slideGap: string;
   options?: EmblaOptionsType;
+  plugins?: EmblaPluginType[];
   PrevButton?: () => JSX.Element;
   NextButton?: () => JSX.Element;
 };
@@ -26,12 +30,13 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         slidesToScroll: 'auto',
         containScroll: 'trimSnaps',
       },
+      plugins,
       children,
       ...otherProps
     },
     ref,
   ) => {
-    const [emblaRef, emblaApi] = useEmblaCarousel(options);
+    const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
 
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(true);
