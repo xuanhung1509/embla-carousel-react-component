@@ -72,12 +72,13 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     const contextValue = useMemo(
       () => ({
         slideGap,
+        options,
         canScrollPrev,
         canScrollNext,
         scrollPrev,
         scrollNext,
       }),
-      [slideGap, canScrollPrev, canScrollNext, scrollPrev, scrollNext],
+      [slideGap, options, canScrollPrev, canScrollNext, scrollPrev, scrollNext],
     );
 
     return (
@@ -88,7 +89,14 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
           {...otherProps}
         >
           <div ref={emblaRef} style={{ overflow: 'hidden' }}>
-            <div style={{ ...containerStyle, marginLeft: -`${slideGap}` }}>
+            <div
+              style={{
+                ...containerStyle,
+                [options.axis === 'y'
+                  ? 'marginTop'
+                  : 'marginLeft']: `-${slideGap}`,
+              }}
+            >
               {children}
             </div>
 
