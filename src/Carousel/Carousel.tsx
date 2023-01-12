@@ -12,6 +12,7 @@ type CarouselProps = React.DetailedHTMLProps<
 > & {
   slidesPerView: number;
   slideGap: string;
+  containerStyle?: React.CSSProperties;
   options?: EmblaOptionsType;
   plugins?: EmblaPluginType[];
   PrevButton?: () => JSX.Element;
@@ -25,6 +26,11 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       NextButton,
       slidesPerView,
       slideGap,
+      containerStyle = {
+        display: 'grid',
+        gridAutoFlow: 'column',
+        gridAutoColumns: `${100 / slidesPerView}%`,
+      },
       options = {
         align: 'start',
         slidesToScroll: 'auto',
@@ -82,14 +88,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
           {...otherProps}
         >
           <div ref={emblaRef} style={{ overflow: 'hidden' }}>
-            <div
-              style={{
-                display: 'grid',
-                gridAutoFlow: 'column',
-                gridAutoColumns: `${100 / slidesPerView}%`,
-                marginLeft: `-${slideGap}`,
-              }}
-            >
+            <div style={{ ...containerStyle, marginLeft: -`${slideGap}` }}>
               {children}
             </div>
 
