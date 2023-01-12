@@ -81,10 +81,11 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...otherProps}
         >
-          <div ref={emblaRef} className='overflow-hidden'>
+          <div ref={emblaRef} style={{ overflow: 'hidden' }}>
             <div
-              className='grid grid-flow-col'
               style={{
+                display: 'grid',
+                gridAutoFlow: 'column',
                 gridAutoColumns: `${100 / slidesPerView}%`,
                 marginLeft: `-${slideGap}`,
               }}
