@@ -6,18 +6,29 @@ import useEmblaCarousel, {
 } from 'embla-carousel-react';
 import { CarouselContext } from '@/Carousel/CarouselContext';
 
+type Never<T> = { [P in keyof T]?: never };
+
+type DefaultStyleProps = {
+  slidesPerView: number;
+};
+type UserStyleProps = {
+  containerStyle: React.CSSProperties;
+};
+
+type OnlyDefaultStyleProps = DefaultStyleProps & Never<UserStyleProps>;
+type OnlyUserStyleProps = UserStyleProps & Never<DefaultStyleProps>;
+
 type CarouselProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
-> & {
-  slidesPerView: number;
-  slideGap: string;
-  containerStyle?: React.CSSProperties;
-  options?: EmblaOptionsType;
-  plugins?: EmblaPluginType[];
-  PrevButton?: () => JSX.Element;
-  NextButton?: () => JSX.Element;
-};
+> &
+  (OnlyDefaultStyleProps | OnlyUserStyleProps) & {
+    slideGap: string;
+    options?: EmblaOptionsType;
+    plugins?: EmblaPluginType[];
+    PrevButton?: () => JSX.Element;
+    NextButton?: () => JSX.Element;
+  };
 
 const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
   (
@@ -29,7 +40,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       containerStyle = {
         display: 'grid',
         gridAutoFlow: 'column',
-        gridAutoColumns: `${100 / slidesPerView}%`,
+        gridAutoColumns: slidesPerView ? `${100 / slidesPerView}%` : '100%',
       },
       options = {
         align: 'start',

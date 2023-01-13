@@ -114,7 +114,6 @@ const VariableWidths = () => (
     <h2 className='text-2xl font-bold'>Variable Widths</h2>
     <Carousel
       slideGap='1rem'
-      slidesPerView={1}
       containerStyle={{
         display: 'flex',
         flexDirection: 'row',
@@ -140,7 +139,6 @@ const YAxis = () => (
     <h2 className='text-2xl font-bold'>Y Axis</h2>
     <Carousel
       slideGap='1rem'
-      slidesPerView={1}
       containerStyle={{
         display: 'flex',
         flexDirection: 'column',
