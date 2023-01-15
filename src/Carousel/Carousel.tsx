@@ -9,7 +9,7 @@ import { CarouselContext } from '@/Carousel/CarouselContext';
 type Never<T> = { [P in keyof T]?: never };
 
 type DefaultStyleProps = {
-  slidesPerView: number;
+  perView: number;
 };
 type UserStyleProps = {
   containerStyle: React.CSSProperties;
@@ -23,7 +23,7 @@ type CarouselProps = React.DetailedHTMLProps<
   HTMLDivElement
 > &
   (OnlyDefaultStyleProps | OnlyUserStyleProps) & {
-    slideGap: string;
+    gap: string;
     options?: EmblaOptionsType;
     plugins?: EmblaPluginType[];
     PrevButton?: () => JSX.Element;
@@ -37,12 +37,12 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       PrevButton,
       NextButton,
       Dots,
-      slidesPerView,
-      slideGap,
+      perView,
+      gap,
       containerStyle = {
         display: 'grid',
         gridAutoFlow: 'column',
-        gridAutoColumns: slidesPerView ? `${100 / slidesPerView}%` : '100%',
+        gridAutoColumns: perView ? `${100 / perView}%` : '100%',
       },
       options = {
         align: 'start',
@@ -94,7 +94,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
     const contextValue = useMemo(
       () => ({
-        slideGap,
+        gap,
         options,
         canScrollPrev,
         canScrollNext,
@@ -105,7 +105,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         scrollTo,
       }),
       [
-        slideGap,
+        gap,
         options,
         canScrollPrev,
         canScrollNext,
@@ -128,9 +128,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             <div
               style={{
                 ...containerStyle,
-                [options.axis === 'y'
-                  ? 'marginTop'
-                  : 'marginLeft']: `-${slideGap}`,
+                [options.axis === 'y' ? 'marginTop' : 'marginLeft']: `-${gap}`,
               }}
             >
               {children}
