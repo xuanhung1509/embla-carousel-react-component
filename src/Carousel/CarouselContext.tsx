@@ -6,8 +6,11 @@ type CarouselContextProps = {
   options: EmblaOptionsType;
   canScrollPrev: boolean;
   canScrollNext: boolean;
+  selectedIndex: number;
+  scrollSnaps: number[];
   scrollPrev: () => void;
   scrollNext: () => void;
+  scrollTo: (index: number) => void;
 };
 
 const CarouselContext = createContext<CarouselContextProps | null>(null);

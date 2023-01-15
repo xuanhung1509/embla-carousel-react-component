@@ -28,6 +28,7 @@ type CarouselProps = React.DetailedHTMLProps<
     plugins?: EmblaPluginType[];
     PrevButton?: () => JSX.Element;
     NextButton?: () => JSX.Element;
+    Dots?: () => JSX.Element;
   };
 
 const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
@@ -35,6 +36,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     {
       PrevButton,
       NextButton,
+      Dots,
       slidesPerView,
       slideGap,
       containerStyle = {
@@ -57,6 +59,8 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(true);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
     const scrollPrev = useCallback(() => {
       if (emblaApi) emblaApi.scrollPrev();
@@ -66,17 +70,25 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
 
+    const scrollTo = useCallback(
+      (index: number) => {
+        if (emblaApi) emblaApi.scrollTo(index);
+      },
+      [emblaApi],
+    );
+
     useEffect(() => {
       if (!emblaApi) return;
 
       const handleSelect = () => {
-        if (!emblaApi) return;
-
         setCanScrollPrev(emblaApi.canScrollPrev());
         setCanScrollNext(emblaApi.canScrollNext());
+        setSelectedIndex(emblaApi.selectedScrollSnap());
       };
 
+      setScrollSnaps(emblaApi.scrollSnapList());
       emblaApi.on('select', handleSelect);
+      emblaApi.on('reInit', handleSelect);
       handleSelect();
     }, [emblaApi]);
 
@@ -86,10 +98,23 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         options,
         canScrollPrev,
         canScrollNext,
+        selectedIndex,
+        scrollSnaps,
         scrollPrev,
         scrollNext,
+        scrollTo,
       }),
-      [slideGap, options, canScrollPrev, canScrollNext, scrollPrev, scrollNext],
+      [
+        slideGap,
+        options,
+        canScrollPrev,
+        canScrollNext,
+        selectedIndex,
+        scrollSnaps,
+        scrollPrev,
+        scrollNext,
+        scrollTo,
+      ],
     );
 
     return (
@@ -110,10 +135,11 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             >
               {children}
             </div>
-
-            {PrevButton && <PrevButton />}
-            {NextButton && <NextButton />}
           </div>
+
+          {PrevButton && <PrevButton />}
+          {NextButton && <NextButton />}
+          {Dots && <Dots />}
         </div>
       </CarouselContext.Provider>
     );
