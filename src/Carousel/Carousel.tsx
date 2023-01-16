@@ -93,22 +93,25 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     );
 
     useEffect(() => {
-      if (!emblaMainApi || !emblaThumbsApi) return;
+      if (!emblaMainApi) return;
 
       const handleSelect = () => {
         setCanScrollPrev(emblaMainApi.canScrollPrev());
         setCanScrollNext(emblaMainApi.canScrollNext());
 
         const selectedScrollSnap = emblaMainApi.selectedScrollSnap();
-        emblaThumbsApi.scrollTo(selectedScrollSnap);
         setSelectedIndex(selectedScrollSnap);
+
+        if (Thumbs && emblaThumbsApi) {
+          emblaThumbsApi.scrollTo(selectedScrollSnap);
+        }
       };
 
       setScrollSnaps(emblaMainApi.scrollSnapList());
       emblaMainApi.on('select', handleSelect);
       emblaMainApi.on('reInit', handleSelect);
       handleSelect();
-    }, [emblaMainApi, emblaThumbsApi]);
+    }, [emblaMainApi, emblaThumbsApi, Thumbs]);
 
     const contextValue = useMemo(
       () => ({
