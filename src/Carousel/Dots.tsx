@@ -19,8 +19,9 @@ const Dots = ({
 
   return (
     <>
-      {scrollSnaps.map((_, index) => (
+      {scrollSnaps.map((n, index) => (
         <button
+          key={n}
           type='button'
           onClick={() => scrollTo(index)}
           className={classnames(
