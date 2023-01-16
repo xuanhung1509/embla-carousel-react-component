@@ -4,8 +4,10 @@ import { useCarouselContext } from '@/Carousel/CarouselContext';
 const classnames = (...classes: Array<string | boolean | undefined>) =>
   classes.filter(Boolean).join(' ');
 
-type DotsProps = {
-  className?: string;
+type DotsProps = React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> & {
   selectedClassName?: string;
   nonSelectedClassName?: string;
 };
@@ -19,18 +21,23 @@ const Dots = ({
 
   return (
     <>
-      {scrollSnaps.map((n, index) => (
-        <button
-          key={n}
-          type='button'
-          onClick={() => scrollTo(index)}
-          className={classnames(
-            className,
-            index === selectedIndex ? selectedClassName : nonSelectedClassName,
-          )}
-          aria-label='dot'
-        />
-      ))}
+      {scrollSnaps.map((n, index) => {
+        const selected = index === selectedIndex;
+
+        return (
+          <button
+            key={n}
+            type='button'
+            data-selected={selected}
+            onClick={() => scrollTo(index)}
+            className={classnames(
+              className,
+              selected ? selectedClassName : nonSelectedClassName,
+            )}
+            aria-label='dot'
+          />
+        );
+      })}
     </>
   );
 };
