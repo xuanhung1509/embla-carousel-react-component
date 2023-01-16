@@ -2,6 +2,7 @@ import Carousel from '@/Carousel/Carousel';
 import { NextButton, PrevButton } from '@/Carousel/CarouselButton';
 import Dots from '@/Carousel/CarouselDots';
 import CarouselSlide from '@/Carousel/CarouselSlide';
+import { Thumb, Thumbs } from '@/Carousel/CarouselThumbs';
 import './App.css';
 
 const Default = () => (
@@ -210,6 +211,37 @@ const ArrowsAndDots = () => (
   </div>
 );
 
+const MyThumbs = () => (
+  <Thumbs perView={3.5} gap='0.5rem' className='mt-4'>
+    {[...Array(5).keys()].map((n) => (
+      <Thumb
+        key={n}
+        index={n}
+        className='h-24 rounded bg-slate-300'
+        activeClassName='opacity-100'
+        nonActiveClassName='opacity-50'
+      >
+        {n + 1}
+      </Thumb>
+    ))}
+  </Thumbs>
+);
+
+const Thumbnails = () => (
+  <div>
+    <h2 className='text-2xl font-bold'>Thumbnails</h2>
+    <Carousel gap='1rem' perView={1} Thumbs={MyThumbs} className='mt-4'>
+      {[...Array(5).keys()].map((n) => (
+        <CarouselSlide key={n}>
+          <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
+            Slide {n + 1}
+          </div>
+        </CarouselSlide>
+      ))}
+    </Carousel>
+  </div>
+);
+
 const App = () => (
   <div className='container mx-auto flex flex-col items-stretch gap-8 py-6 px-4'>
     <Default />
@@ -220,6 +252,7 @@ const App = () => (
     <VariableWidths />
     <YAxis />
     <ArrowsAndDots />
+    <Thumbnails />
   </div>
 );
 

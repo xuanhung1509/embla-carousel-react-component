@@ -8,9 +8,11 @@ type CarouselContextProps = {
   canScrollNext: boolean;
   selectedIndex: number;
   scrollSnaps: number[];
+  thumbsRef: React.LegacyRef<HTMLDivElement>;
   scrollPrev: () => void;
   scrollNext: () => void;
   scrollTo: (index: number) => void;
+  onThumbClick: (index: number) => void;
 };
 
 const CarouselContext = createContext<CarouselContextProps | null>(null);

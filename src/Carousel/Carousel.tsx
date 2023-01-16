@@ -29,6 +29,7 @@ type CarouselProps = React.DetailedHTMLProps<
     PrevButton?: () => JSX.Element;
     NextButton?: () => JSX.Element;
     Dots?: () => JSX.Element;
+    Thumbs?: () => JSX.Element;
   };
 
 const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
@@ -37,6 +38,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       PrevButton,
       NextButton,
       Dots,
+      Thumbs,
       perView,
       gap,
       containerStyle = {
@@ -55,7 +57,11 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     },
     ref,
   ) => {
-    const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
+    const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, plugins);
+    const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
+      containScroll: 'keepSnaps',
+      dragFree: true,
+    });
 
     const [canScrollPrev, setCanScrollPrev] = useState(false);
     const [canScrollNext, setCanScrollNext] = useState(true);
@@ -63,34 +69,46 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
     const scrollPrev = useCallback(() => {
-      if (emblaApi) emblaApi.scrollPrev();
-    }, [emblaApi]);
+      if (emblaMainApi) emblaMainApi.scrollPrev();
+    }, [emblaMainApi]);
 
     const scrollNext = useCallback(() => {
-      if (emblaApi) emblaApi.scrollNext();
-    }, [emblaApi]);
+      if (emblaMainApi) emblaMainApi.scrollNext();
+    }, [emblaMainApi]);
 
     const scrollTo = useCallback(
       (index: number) => {
-        if (emblaApi) emblaApi.scrollTo(index);
+        if (emblaMainApi) emblaMainApi.scrollTo(index);
       },
-      [emblaApi],
+      [emblaMainApi],
+    );
+
+    const onThumbClick = useCallback(
+      (index: number) => {
+        if (!emblaMainApi || !emblaThumbsApi) return;
+
+        if (emblaThumbsApi.clickAllowed()) emblaMainApi.scrollTo(index);
+      },
+      [emblaMainApi, emblaThumbsApi],
     );
 
     useEffect(() => {
-      if (!emblaApi) return;
+      if (!emblaMainApi || !emblaThumbsApi) return;
 
       const handleSelect = () => {
-        setCanScrollPrev(emblaApi.canScrollPrev());
-        setCanScrollNext(emblaApi.canScrollNext());
-        setSelectedIndex(emblaApi.selectedScrollSnap());
+        setCanScrollPrev(emblaMainApi.canScrollPrev());
+        setCanScrollNext(emblaMainApi.canScrollNext());
+
+        const selectedScrollSnap = emblaMainApi.selectedScrollSnap();
+        emblaThumbsApi.scrollTo(selectedScrollSnap);
+        setSelectedIndex(selectedScrollSnap);
       };
 
-      setScrollSnaps(emblaApi.scrollSnapList());
-      emblaApi.on('select', handleSelect);
-      emblaApi.on('reInit', handleSelect);
+      setScrollSnaps(emblaMainApi.scrollSnapList());
+      emblaMainApi.on('select', handleSelect);
+      emblaMainApi.on('reInit', handleSelect);
       handleSelect();
-    }, [emblaApi]);
+    }, [emblaMainApi, emblaThumbsApi]);
 
     const contextValue = useMemo(
       () => ({
@@ -100,9 +118,11 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         canScrollNext,
         selectedIndex,
         scrollSnaps,
+        thumbsRef: emblaThumbsRef,
         scrollPrev,
         scrollNext,
         scrollTo,
+        onThumbClick,
       }),
       [
         gap,
@@ -111,9 +131,11 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         canScrollNext,
         selectedIndex,
         scrollSnaps,
+        emblaThumbsRef,
         scrollPrev,
         scrollNext,
         scrollTo,
+        onThumbClick,
       ],
     );
 
@@ -124,7 +146,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...otherProps}
         >
-          <div ref={emblaRef} style={{ overflow: 'hidden' }}>
+          <div ref={emblaMainRef} style={{ overflow: 'hidden' }}>
             <div
               style={{
                 ...containerStyle,
@@ -138,6 +160,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
           {PrevButton && <PrevButton />}
           {NextButton && <NextButton />}
           {Dots && <Dots />}
+          {Thumbs && <Thumbs />}
         </div>
       </CarouselContext.Provider>
     );
