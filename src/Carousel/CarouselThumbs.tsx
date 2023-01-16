@@ -10,10 +10,8 @@ type ThumbProps = React.DetailedHTMLProps<
   HTMLButtonElement
 > & {
   index: number;
-  className?: string;
   selectedClassName?: string;
   nonSelectedClassName?: string;
-  children?: React.ReactNode;
 };
 
 const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
@@ -29,15 +27,17 @@ const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
     ref,
   ) => {
     const { selectedIndex, onThumbClick } = useCarouselContext();
+    const selected = index === selectedIndex;
 
     return (
       <button
         ref={ref}
         type='button'
+        data-selected={selected}
         onClick={() => onThumbClick(index)}
         className={classnames(
           className,
-          index === selectedIndex ? selectedClassName : nonSelectedClassName,
+          selected ? selectedClassName : nonSelectedClassName,
         )}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
@@ -54,7 +54,6 @@ type ThumbsProps = React.DetailedHTMLProps<
 > & {
   perView: number;
   gap?: string;
-  children: React.ReactNode;
 };
 
 const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
