@@ -1,13 +1,22 @@
+/* eslint-disable react/require-default-props */
 import { forwardRef } from 'react';
 import { useCarouselContext } from '@/Carousel/CarouselContext';
+
+const classnames = (...classes: Array<string | boolean | undefined>) =>
+  classes.filter(Boolean).join(' ');
 
 type PrevButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
->;
+> & {
+  disabledClassName?: string;
+};
 
 const PrevButton = forwardRef<HTMLButtonElement, PrevButtonProps>(
-  ({ children, ...otherProps }, ref) => {
+  (
+    { className, disabledClassName = 'disabled', children, ...otherProps },
+    ref,
+  ) => {
     const { canScrollPrev, scrollPrev } = useCarouselContext();
 
     return (
@@ -16,6 +25,7 @@ const PrevButton = forwardRef<HTMLButtonElement, PrevButtonProps>(
         type='button'
         data-disabled={!canScrollPrev}
         onClick={scrollPrev}
+        className={classnames(className, !canScrollPrev && disabledClassName)}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       >
@@ -28,10 +38,15 @@ const PrevButton = forwardRef<HTMLButtonElement, PrevButtonProps>(
 type NextButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
->;
+> & {
+  disabledClassName?: string;
+};
 
 const NextButton = forwardRef<HTMLButtonElement, NextButtonProps>(
-  ({ children, ...otherProps }, ref) => {
+  (
+    { className, disabledClassName = 'disabled', children, ...otherProps },
+    ref,
+  ) => {
     const { canScrollNext, scrollNext } = useCarouselContext();
 
     return (
@@ -40,6 +55,7 @@ const NextButton = forwardRef<HTMLButtonElement, NextButtonProps>(
         type='button'
         data-disabled={!canScrollNext}
         onClick={scrollNext}
+        className={classnames(className, !canScrollNext && disabledClassName)}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       >
