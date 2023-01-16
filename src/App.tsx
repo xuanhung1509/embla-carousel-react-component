@@ -3,6 +3,7 @@ import { NextButton, PrevButton } from '@/Carousel/CarouselButton';
 import Dots from '@/Carousel/CarouselDots';
 import CarouselSlide from '@/Carousel/CarouselSlide';
 import { Thumb, Thumbs } from '@/Carousel/CarouselThumbs';
+import { ClassNames } from '@/Carousel/Plugins';
 import './App.css';
 
 const Default = () => (
@@ -241,6 +242,30 @@ const Thumbnails = () => (
   </div>
 );
 
+const ClassNamesPlugin = () => (
+  <div>
+    <h2 className='text-2xl font-bold'>Class Names</h2>
+    <Carousel
+      perView={1}
+      plugins={[
+        ClassNames({
+          draggable: 'cursor-grab',
+          dragging: 'cursor-grabbing',
+        }),
+      ]}
+      className='mt-4'
+    >
+      {[...Array(5).keys()].map((n) => (
+        <CarouselSlide key={n}>
+          <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
+            Slide {n + 1}
+          </div>
+        </CarouselSlide>
+      ))}
+    </Carousel>
+  </div>
+);
+
 const App = () => (
   <div className='container mx-auto flex flex-col items-stretch gap-8 py-6 px-4'>
     <Default />
@@ -252,6 +277,7 @@ const App = () => (
     <YAxis />
     <ArrowsAndDots />
     <Thumbnails />
+    <ClassNamesPlugin />
   </div>
 );
 
