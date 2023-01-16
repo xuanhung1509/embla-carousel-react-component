@@ -3,7 +3,7 @@ import { NextButton, PrevButton } from '@/Carousel/CarouselButton';
 import Dots from '@/Carousel/CarouselDots';
 import CarouselSlide from '@/Carousel/CarouselSlide';
 import { Thumb, Thumbs } from '@/Carousel/CarouselThumbs';
-import { ClassNames } from '@/Carousel/Plugins';
+import { ClassNames, Autoplay } from '@/Carousel/Plugins';
 import './App.css';
 
 const Default = () => (
@@ -242,6 +242,29 @@ const Thumbnails = () => (
   </div>
 );
 
+const AutoPlayPlugin = () => (
+  <div>
+    <h2 className='text-2xl font-bold'>Autoplay</h2>
+    <Carousel
+      perView={1}
+      plugins={[
+        Autoplay({
+          delay: 3000,
+        }),
+      ]}
+      className='mt-4'
+    >
+      {[...Array(5).keys()].map((n) => (
+        <CarouselSlide key={n}>
+          <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
+            Slide {n + 1}
+          </div>
+        </CarouselSlide>
+      ))}
+    </Carousel>
+  </div>
+);
+
 const ClassNamesPlugin = () => (
   <div>
     <h2 className='text-2xl font-bold'>Class Names</h2>
@@ -277,6 +300,7 @@ const App = () => (
     <YAxis />
     <ArrowsAndDots />
     <Thumbnails />
+    <AutoPlayPlugin />
     <ClassNamesPlugin />
   </div>
 );
