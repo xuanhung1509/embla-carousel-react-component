@@ -6,14 +6,14 @@ const classnames = (...classes: Array<string | boolean | undefined>) =>
 
 type DotsProps = {
   className?: string;
-  activeClassName?: string;
-  nonActiveClassName?: string;
+  selectedClassName?: string;
+  nonSelectedClassName?: string;
 };
 
 const Dots = ({
   className,
-  activeClassName = 'active',
-  nonActiveClassName = '',
+  selectedClassName = 'selected',
+  nonSelectedClassName = '',
 }: DotsProps) => {
   const { selectedIndex, scrollSnaps, scrollTo } = useCarouselContext();
 
@@ -26,7 +26,7 @@ const Dots = ({
           onClick={() => scrollTo(index)}
           className={classnames(
             className,
-            index === selectedIndex ? activeClassName : nonActiveClassName,
+            index === selectedIndex ? selectedClassName : nonSelectedClassName,
           )}
           aria-label='dot'
         />

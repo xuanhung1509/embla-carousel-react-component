@@ -177,8 +177,8 @@ const MyDots = () => (
   <div className='absolute bottom-4 left-0 right-0 z-10 flex items-center justify-center gap-2'>
     <Dots
       className='h-2 w-5 rounded'
-      activeClassName='bg-slate-900'
-      nonActiveClassName='bg-slate-400'
+      selectedClassName='bg-slate-900'
+      nonSelectedClassName='bg-slate-400'
     />
   </div>
 );
@@ -211,8 +211,8 @@ const MyThumbs = () => (
         key={n}
         index={n}
         className='h-24 rounded bg-slate-300'
-        activeClassName='opacity-100'
-        nonActiveClassName='opacity-50'
+        selectedClassName='opacity-100'
+        nonSelectedClassName='opacity-50'
       >
         {n + 1}
       </Thumb>

@@ -11,8 +11,8 @@ type ThumbProps = React.DetailedHTMLProps<
 > & {
   index: number;
   className?: string;
-  activeClassName?: string;
-  nonActiveClassName?: string;
+  selectedClassName?: string;
+  nonSelectedClassName?: string;
   children?: React.ReactNode;
 };
 
@@ -21,8 +21,8 @@ const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
     {
       index,
       className,
-      activeClassName = 'active',
-      nonActiveClassName = '',
+      selectedClassName = 'selected',
+      nonSelectedClassName = '',
       children,
       ...otherProps
     },
@@ -37,7 +37,7 @@ const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
         onClick={() => onThumbClick(index)}
         className={classnames(
           className,
-          index === selectedIndex ? activeClassName : nonActiveClassName,
+          index === selectedIndex ? selectedClassName : nonSelectedClassName,
         )}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
