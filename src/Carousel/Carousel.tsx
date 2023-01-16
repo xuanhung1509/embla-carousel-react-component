@@ -23,7 +23,7 @@ type CarouselProps = React.DetailedHTMLProps<
   HTMLDivElement
 > &
   (OnlyDefaultStyleProps | OnlyUserStyleProps) & {
-    gap: string;
+    gap?: string;
     options?: EmblaOptionsType;
     plugins?: EmblaPluginType[];
     PrevButton?: () => JSX.Element;
@@ -40,7 +40,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       Dots,
       Thumbs,
       perView,
-      gap,
+      gap = '1rem',
       containerStyle = {
         display: 'grid',
         gridAutoFlow: 'column',

@@ -8,7 +8,7 @@ import './App.css';
 const Default = () => (
   <div>
     <h2 className='text-2xl font-bold'>Default</h2>
-    <Carousel gap='1rem' perView={1} className='mt-4'>
+    <Carousel perView={1} className='mt-4'>
       {[...Array(5).keys()].map((n) => (
         <CarouselSlide key={n}>
           <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
@@ -24,7 +24,6 @@ const RightToLeft = () => (
   <div>
     <h2 className='text-2xl font-bold'>Right To Left</h2>
     <Carousel
-      gap='1rem'
       perView={1}
       options={{
         direction: 'rtl',
@@ -49,7 +48,6 @@ const SlidesToScroll = () => (
   <div>
     <h2 className='text-2xl font-bold'>Slides To Scroll</h2>
     <Carousel
-      gap='1rem'
       perView={2}
       options={{
         slidesToScroll: 2,
@@ -71,7 +69,6 @@ const DragFree = () => (
   <div>
     <h2 className='text-2xl font-bold'>Drag Free</h2>
     <Carousel
-      gap='1rem'
       perView={2}
       options={{
         slidesToScroll: 2,
@@ -94,7 +91,6 @@ const Align = () => (
   <div>
     <h2 className='text-2xl font-bold'>Align</h2>
     <Carousel
-      gap='1rem'
       perView={1.25}
       options={{
         align: 'center',
@@ -116,7 +112,6 @@ const VariableWidths = () => (
   <div>
     <h2 className='text-2xl font-bold'>Variable Widths</h2>
     <Carousel
-      gap='1rem'
       containerStyle={{
         display: 'flex',
         flexDirection: 'row',
@@ -141,7 +136,6 @@ const YAxis = () => (
   <div>
     <h2 className='text-2xl font-bold'>Y Axis</h2>
     <Carousel
-      gap='1rem'
       containerStyle={{
         display: 'flex',
         flexDirection: 'column',
@@ -193,7 +187,6 @@ const ArrowsAndDots = () => (
   <div>
     <h2 className='text-2xl font-bold'>Arrows & Dots</h2>
     <Carousel
-      gap='1rem'
       perView={1}
       PrevButton={MyPrevButton}
       NextButton={MyNextButton}
@@ -230,7 +223,7 @@ const MyThumbs = () => (
 const Thumbnails = () => (
   <div>
     <h2 className='text-2xl font-bold'>Thumbnails</h2>
-    <Carousel gap='1rem' perView={1} Thumbs={MyThumbs} className='mt-4'>
+    <Carousel perView={1} Thumbs={MyThumbs} className='mt-4'>
       {[...Array(5).keys()].map((n) => (
         <CarouselSlide key={n}>
           <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
