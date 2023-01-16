@@ -1,6 +1,6 @@
 import Carousel from '@/Carousel/Carousel';
 import { NextButton, PrevButton } from '@/Carousel/CarouselButton';
-import Dots from '@/Carousel/Dots';
+import Dots from '@/Carousel/CarouselDots';
 import CarouselSlide from '@/Carousel/CarouselSlide';
 import './App.css';
 
