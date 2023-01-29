@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-carousel": "*",
-    "react-dom": "^18.2.0"
+    "tsconfig": "*"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
