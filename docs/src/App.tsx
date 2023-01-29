@@ -310,22 +310,20 @@ const WheelGesturesPlugin = () => (
   </div>
 );
 
-const App = () => {
-  return (
-    <div className='container mx-auto flex flex-col items-stretch gap-8 py-6 px-4'>
-      <Default />
-      <RightToLeft />
-      <SlidesToScroll />
-      <DragFree />
-      <Align />
-      <VariableWidths />
-      <YAxis />
-      <ArrowsAndDots />
-      <Thumbnails />
-      <AutoPlayPlugin />
-      <ClassNamesPlugin />
-      <WheelGesturesPlugin />
-    </div>
-  );
-};
+const App = () => (
+  <div className='container mx-auto flex flex-col items-stretch gap-8 py-6 px-4'>
+    <Default />
+    <RightToLeft />
+    <SlidesToScroll />
+    <DragFree />
+    <Align />
+    <VariableWidths />
+    <YAxis />
+    <ArrowsAndDots />
+    <Thumbnails />
+    <AutoPlayPlugin />
+    <ClassNamesPlugin />
+    <WheelGesturesPlugin />
+  </div>
+);
 export default App;
