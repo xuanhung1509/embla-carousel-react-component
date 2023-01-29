@@ -9,5 +9,8 @@
   "scripts": {
     "dev": "yarn workspace docs run dev",
     "build": "yarn workspace react-carousel run build"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.3"
   }
 }
