@@ -9,13 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "embla-carousel-auto-height": "^7.0.5",
-    "embla-carousel-autoplay": "^7.0.5",
-    "embla-carousel-class-names": "^7.0.5",
     "embla-carousel-react": "^7.0.5",
-    "embla-carousel-wheel-gestures": "^3.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "tsconfig": "*",
     "eslint-config-custom": "*"
   },
@@ -27,6 +21,9 @@
     "typescript": "^4.9.3",
     "vite": "^4.0.4",
     "vite-plugin-dts": "^1.7.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0. || ^17.0.1 || ^18.0.0"
   },
   "files": [
     "dist"

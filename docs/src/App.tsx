@@ -6,10 +6,10 @@ import {
   Dots,
   Thumbs,
   Thumb,
-  Autoplay,
-  ClassNames,
-  WheelGestures,
 } from 'react-carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import ClassNames from 'embla-carousel-class-names';
+import { WheelGesturesPlugin as WheelGestures } from 'embla-carousel-wheel-gestures';
 import './App.css';
 
 const Default = () => (
