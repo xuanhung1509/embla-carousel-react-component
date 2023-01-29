@@ -1,9 +1,15 @@
-import Carousel from '@/Carousel/Carousel';
-import { NextButton, PrevButton } from '@/Carousel/CarouselButton';
-import Dots from '@/Carousel/CarouselDots';
-import CarouselSlide from '@/Carousel/CarouselSlide';
-import { Thumb, Thumbs } from '@/Carousel/CarouselThumbs';
-import { ClassNames, Autoplay, WheelGestures } from '@/Carousel/Plugins';
+import {
+  Carousel,
+  CarouselSlide,
+  PrevButton,
+  NextButton,
+  Dots,
+  Thumbs,
+  Thumb,
+  Autoplay,
+  ClassNames,
+  WheelGestures,
+} from 'react-carousel';
 import './App.css';
 
 const Default = () => (
@@ -304,21 +310,22 @@ const WheelGesturesPlugin = () => (
   </div>
 );
 
-const App = () => (
-  <div className='container mx-auto flex flex-col items-stretch gap-8 py-6 px-4'>
-    <Default />
-    <RightToLeft />
-    <SlidesToScroll />
-    <DragFree />
-    <Align />
-    <VariableWidths />
-    <YAxis />
-    <ArrowsAndDots />
-    <Thumbnails />
-    <AutoPlayPlugin />
-    <ClassNamesPlugin />
-    <WheelGesturesPlugin />
-  </div>
-);
-
+const App = () => {
+  return (
+    <div className='container mx-auto flex flex-col items-stretch gap-8 py-6 px-4'>
+      <Default />
+      <RightToLeft />
+      <SlidesToScroll />
+      <DragFree />
+      <Align />
+      <VariableWidths />
+      <YAxis />
+      <ArrowsAndDots />
+      <Thumbnails />
+      <AutoPlayPlugin />
+      <ClassNamesPlugin />
+      <WheelGesturesPlugin />
+    </div>
+  );
+};
 export default App;

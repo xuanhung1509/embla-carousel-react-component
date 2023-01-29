@@ -1,5 +1,5 @@
 import { forwardRef } from 'react';
-import { useCarouselContext } from '@/Carousel/CarouselContext';
+import { useCarouselContext } from './CarouselContext';
 
 type CarouselSlideProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,

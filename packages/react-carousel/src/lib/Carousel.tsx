@@ -1,10 +1,9 @@
-/* eslint-disable react/require-default-props */
 import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 import useEmblaCarousel, {
   EmblaOptionsType,
   EmblaPluginType,
 } from 'embla-carousel-react';
-import { CarouselContext } from '@/Carousel/CarouselContext';
+import { CarouselContext } from './CarouselContext';
 
 type Never<T> = { [P in keyof T]?: never };
 

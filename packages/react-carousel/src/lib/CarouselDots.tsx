@@ -1,5 +1,4 @@
-/* eslint-disable react/require-default-props */
-import { useCarouselContext } from '@/Carousel/CarouselContext';
+import { useCarouselContext } from './CarouselContext';
 
 const classnames = (...classes: Array<string | boolean | undefined>) =>
   classes.filter(Boolean).join(' ');

@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    tsconfigRootDir: __dirname,
     project: './tsconfig.eslint.json',
   },
   env: {
@@ -15,14 +16,6 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'prettier',
   ],
-  settings: {
-    'import/resolver': {
-      alias: {
-        map: [['@', './src']],
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-      },
-    },
-  },
   rules: {
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': 'warn',
@@ -34,6 +27,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'warn',
     'react/jsx-no-useless-fragment': 'warn',
+    'react/require-default-props': 'off',
     'react-hooks/exhaustive-deps': 'warn',
     'react/function-component-definition': [
       'warn',
@@ -43,4 +37,5 @@ module.exports = {
       },
     ],
   },
+  ignorePatterns: ['dist'],
 };

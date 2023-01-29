@@ -1,6 +1,5 @@
-/* eslint-disable react/require-default-props */
 import { forwardRef } from 'react';
-import { useCarouselContext } from '@/Carousel/CarouselContext';
+import { useCarouselContext } from './CarouselContext';
 
 const classnames = (...classes: Array<string | boolean | undefined>) =>
   classes.filter(Boolean).join(' ');
