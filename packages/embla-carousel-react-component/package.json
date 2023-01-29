@@ -1,14 +1,14 @@
 {
-  "name": "react-carousel",
+  "name": "embla-carousel-react-component",
   "version": "1.0.0",
   "author": "Xuan Hung",
   "description": "A easy-to-use carousel component based on Embla Carousel for React.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuanhung1509/react-carousel"
+    "url": "git+https://github.com/xuanhung1509/embla-carousel-react-component"
   },
   "bugs": {
-    "url": "https://github.com/xuanhung1509/react-carousel/issues"
+    "url": "https://github.com/xuanhung1509/embla-carousel-react-component/issues"
   },
   "license": "MIT",
   "keywords": [
@@ -44,13 +44,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/react-carousel.umd.js",
-  "module": "./dist/react-carousel.es.js",
+  "main": "./dist/embla-carousel-react-component.umd.js",
+  "module": "./dist/embla-carousel-react-component.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/react-carousel.es.js",
-      "require": "./dist/react-carouel.umd.js"
+      "import": "./dist/embla-carousel-react-component.es.js",
+      "require": "./dist/embla-carousel-react-component.umd.js"
     }
   }
 }

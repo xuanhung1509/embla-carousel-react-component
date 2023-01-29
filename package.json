@@ -1,5 +1,5 @@
 {
-  "name": "react-carousel-monorepo",
+  "name": "embla-carousel-react-component-monorepo",
   "license": "MIT",
   "private": true,
   "workspaces": [
@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "dev": "yarn workspace docs run dev",
-    "build": "yarn workspace react-carousel run build"
+    "build": "yarn workspace embla-carousel-react-component run build"
   },
   "devDependencies": {
     "prettier": "^2.8.3"

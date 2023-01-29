@@ -6,7 +6,7 @@ import {
   Dots,
   Thumbs,
   Thumb,
-} from 'react-carousel';
+} from 'embla-carousel-react-component';
 import Autoplay from 'embla-carousel-autoplay';
 import ClassNames from 'embla-carousel-class-names';
 import { WheelGesturesPlugin as WheelGestures } from 'embla-carousel-wheel-gestures';
