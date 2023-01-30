@@ -11,10 +11,10 @@
   "dependencies": {
     "embla-carousel-autoplay": "^7.0.9",
     "embla-carousel-class-names": "^7.0.9",
+    "embla-carousel-react-component": "*",
     "embla-carousel-wheel-gestures": "^3.0.0",
     "eslint-config-custom": "*",
     "react": "^18.2.0",
-    "embla-carousel-react-component": "*",
     "react-dom": "^18.2.0",
     "tsconfig": "*"
   },
@@ -24,6 +24,7 @@
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
+    "prettier-plugin-tailwindcss": "^0.2.2",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
