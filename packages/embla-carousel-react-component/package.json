@@ -2,7 +2,7 @@
   "name": "embla-carousel-react-component",
   "version": "1.0.0",
   "author": "Xuan Hung",
-  "description": "A easy-to-use carousel component based on Embla Carousel for React.",
+  "description": "An easy-to-use carousel component based on Embla Carousel for React.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xuanhung1509/embla-carousel-react-component"
@@ -10,6 +10,7 @@
   "bugs": {
     "url": "https://github.com/xuanhung1509/embla-carousel-react-component/issues"
   },
+  "homepage": "https://github.com/xuanhung1509/embla-carousel-react-component",
   "license": "MIT",
   "keywords": [
     "slider",
