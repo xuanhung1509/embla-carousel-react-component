@@ -21,8 +21,7 @@ const Align = () => {
   `;
 
   return (
-    <article id='align'>
-      <h2 className='text-2xl font-bold'>Align</h2>
+    <>
       <Carousel
         perView={1.25}
         options={{
@@ -39,7 +38,7 @@ const Align = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

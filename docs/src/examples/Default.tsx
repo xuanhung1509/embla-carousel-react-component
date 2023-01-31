@@ -15,8 +15,7 @@ const Default = () => {
   `;
 
   return (
-    <article id='default'>
-      <h2 className='text-2xl font-bold'>Default</h2>
+    <>
       <Carousel perView={1} className='mt-4'>
         {[...Array(5).keys()].map((n) => (
           <Carousel.Slide key={n}>
@@ -27,7 +26,7 @@ const Default = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

@@ -18,8 +18,7 @@ const WheelGesturesPlugin = () => {
   `;
 
   return (
-    <article id='wheel-gestures-plugin'>
-      <h2 className='text-2xl font-bold'>Wheel Gestures</h2>
+    <>
       <Carousel perView={1} plugins={[WheelGestures()]} className='mt-4'>
         {[...Array(5).keys()].map((n) => (
           <Carousel.Slide key={n}>
@@ -30,7 +29,7 @@ const WheelGesturesPlugin = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

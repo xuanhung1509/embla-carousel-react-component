@@ -3,6 +3,7 @@ import {
   TableOfContents,
   Footer,
   ScrollToTopButton,
+  ExampleWrapper,
 } from './components';
 import examples from './constants';
 
@@ -12,8 +13,10 @@ const App = () => (
       <Header />
       <main className='flex flex-col gap-8'>
         <TableOfContents />
-        {examples.map(({ url, Component }) => (
-          <Component key={url} />
+        {examples.map(({ id, title, Component }) => (
+          <ExampleWrapper id={id} title={title}>
+            <Component />
+          </ExampleWrapper>
         ))}
       </main>
       <Footer />

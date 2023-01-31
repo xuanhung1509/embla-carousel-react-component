@@ -13,68 +13,73 @@ import {
   WheelGesturesPlugin,
 } from './examples';
 
-const examples: Array<{
-  url: string;
+export interface IBaseExample {
+  id: string;
   title: string;
+}
+
+interface IExample extends IBaseExample {
   Component: () => JSX.Element;
-}> = [
+}
+
+const examples: IExample[] = [
   {
-    url: '#default',
+    id: 'default',
     title: 'Default',
     Component: Default,
   },
   {
-    url: '#right-to-left',
+    id: 'right-to-left',
     title: 'Right To Left',
     Component: RightToLeft,
   },
   {
-    url: '#slides-to-scroll',
+    id: 'slides-to-scroll',
     title: 'Slides To Scroll',
     Component: SlidesToScroll,
   },
   {
-    url: '#drag-free',
+    id: 'drag-free',
     title: 'Drag Free',
     Component: DragFree,
   },
   {
-    url: '#align',
+    id: 'align',
     title: 'Align',
     Component: Align,
   },
   {
-    url: '#variable-widths',
+    id: 'variable-widths',
     title: 'Variable Widths',
     Component: VariableWidths,
   },
   {
-    url: '#y-axis',
+    id: 'y-axis',
     title: 'Y Axis',
     Component: YAxis,
   },
   {
-    url: '#arrows-and-dots',
+    id: 'arrows-and-dots',
     title: 'Arrows and Dots',
     Component: ArrowsAndDots,
   },
   {
-    url: '#thumbnails',
+    id: 'thumbnails',
     title: 'Thumbnails',
     Component: Thumbnails,
   },
   {
-    url: '#autoplay-plugin',
+    id: 'autoplay-plugin',
     title: 'Autoplay',
     Component: AutoplayPlugin,
   },
   {
-    url: '#class-names-plugin',
+    id: 'class-names-plugin',
     title: 'Class Names',
     Component: ClassNamesPlugin,
   },
   {
-    url: '#wheel-gestures-plugin',
+    id: 'wheel-gestures-plugin',
     title: 'Wheel Gestures',
     Component: WheelGesturesPlugin,
   },

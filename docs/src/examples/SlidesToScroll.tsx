@@ -21,8 +21,7 @@ const SlidesToScroll = () => {
   `;
 
   return (
-    <article id='slides-to-scroll'>
-      <h2 className='text-2xl font-bold'>Slides To Scroll</h2>
+    <>
       <Carousel
         perView={2}
         options={{
@@ -39,7 +38,7 @@ const SlidesToScroll = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

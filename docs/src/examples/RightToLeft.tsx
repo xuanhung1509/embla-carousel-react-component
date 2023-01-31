@@ -24,8 +24,7 @@ const RightToLeft = () => {
   `;
 
   return (
-    <article id='right-to-left'>
-      <h2 className='text-2xl font-bold'>Right To Left</h2>
+    <>
       <Carousel
         perView={1}
         options={{
@@ -45,7 +44,7 @@ const RightToLeft = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

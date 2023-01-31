@@ -62,8 +62,7 @@ const VariableWidths = () => {
   `;
 
   return (
-    <article id='variable-widths'>
-      <h2 className='text-2xl font-bold'>Variable Widths</h2>
+    <>
       <Carousel
         containerStyle={{
           display: 'flex',
@@ -84,7 +83,7 @@ const VariableWidths = () => {
       </Carousel>
       <Code block={tsxCodeBlock} lang='tsx' />
       <Code block={cssCodeBlock} lang='css' />
-    </article>
+    </>
   );
 };
 

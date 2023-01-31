@@ -89,8 +89,7 @@ const ArrowsAndDots = () => {
   `;
 
   return (
-    <article id='arrows-and-dots'>
-      <h2 className='text-2xl font-bold'>Arrows & Dots</h2>
+    <>
       <Carousel
         perView={1}
         PrevButton={MyPrevButton}
@@ -107,7 +106,7 @@ const ArrowsAndDots = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

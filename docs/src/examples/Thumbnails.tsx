@@ -49,8 +49,7 @@ const Thumbnails = () => {
   `;
 
   return (
-    <article id='thumbnails'>
-      <h2 className='text-2xl font-bold'>Thumbnails</h2>
+    <>
       <Carousel perView={1} Thumbs={MyThumbs} className='mt-4'>
         {[...Array(5).keys()].map((n) => (
           <Carousel.Slide key={n}>
@@ -61,7 +60,7 @@ const Thumbnails = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

@@ -26,8 +26,7 @@ const AutoplayPlugin = () => {
   `;
 
   return (
-    <article id='autoplay-plugin'>
-      <h1 className='text-2xl font-bold'>Autoplay</h1>
+    <>
       <Carousel
         perView={0}
         plugins={[
@@ -46,7 +45,7 @@ const AutoplayPlugin = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

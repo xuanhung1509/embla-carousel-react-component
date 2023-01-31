@@ -25,8 +25,7 @@ const YAxis = () => {
   `;
 
   return (
-    <article id='y-axis'>
-      <h2 className='text-2xl font-bold'>Y Axis</h2>
+    <>
       <Carousel
         containerStyle={{
           display: 'flex',
@@ -47,7 +46,7 @@ const YAxis = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

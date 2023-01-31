@@ -22,8 +22,7 @@ const DragFree = () => {
   `;
 
   return (
-    <article id='drag-free'>
-      <h2 className='text-2xl font-bold'>Drag Free</h2>
+    <>
       <Carousel
         perView={2}
         options={{
@@ -41,7 +40,7 @@ const DragFree = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 

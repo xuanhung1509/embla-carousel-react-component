@@ -27,8 +27,7 @@ const ClassNamesPlugin = () => {
   `;
 
   return (
-    <article id='class-names-plugin'>
-      <h2 className='text-2xl font-bold'>Class Names</h2>
+    <>
       <Carousel
         perView={1}
         plugins={[
@@ -48,7 +47,7 @@ const ClassNamesPlugin = () => {
         ))}
       </Carousel>
       <Code block={codeBlock} lang='tsx' />
-    </article>
+    </>
   );
 };
 
