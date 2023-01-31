@@ -74,7 +74,7 @@ const examples: Array<{
     Component: ClassNamesPlugin,
   },
   {
-    url: '#wheel-gestures',
+    url: '#wheel-gestures-plugin',
     title: 'Wheel Gestures',
     Component: WheelGesturesPlugin,
   },
