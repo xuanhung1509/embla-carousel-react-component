@@ -4,6 +4,8 @@ import './styles.css';
 
 const VariableWidths = () => {
   const tsxCodeBlock = `
+    // App.tsx
+
     <Carousel
       containerStyle={{
         display: 'flex',
@@ -25,6 +27,8 @@ const VariableWidths = () => {
   `;
 
   const cssCodeBlock = `
+    # App.css
+
     .embla-slide {
       min-width: 0;
     }

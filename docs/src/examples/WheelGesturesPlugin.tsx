@@ -4,6 +4,8 @@ import Code from '../components/Code';
 
 const WheelGesturesPlugin = () => {
   const codeBlock = `
+    import { WheelGesturesPlugin as WheelGestures } from 'embla-carousel-wheel-gestures';
+
     <Carousel perView={1} plugins={[WheelGestures()]} className='mt-4'>
       {[...Array(5).keys()].map((n) => (
         <Carousel.Slide key={n}>

@@ -4,6 +4,8 @@ import Code from '../components/Code';
 
 const ClassNamesPlugin = () => {
   const codeBlock = `
+    import ClassNames from 'embla-carousel-class-names';
+
     <Carousel
       perView={1}
       plugins={[
