@@ -2,7 +2,7 @@ import Carousel from 'embla-carousel-react-component';
 import Code from '../components/Code';
 
 const MyThumbs = () => (
-  <Carousel.Thumbs perView={3.5} gap='0.5rem' className='mt-4'>
+  <Carousel.Thumbs perView={3.5} gap={8} className='mt-4'>
     {[...Array(5).keys()].map((n) => (
       <Carousel.Thumb
         key={n}
@@ -20,7 +20,7 @@ const MyThumbs = () => (
 const Thumbnails = () => {
   const codeBlock = `
     const MyThumbs = () => (
-      <Carousel.Thumbs perView={3.5} gap='0.5rem' className='mt-4'>
+      <Carousel.Thumbs perView={3.5} gap={8} className='mt-4'>
         {[...Array(5).keys()].map((n) => (
           <Carousel.Thumb
             key={n}
