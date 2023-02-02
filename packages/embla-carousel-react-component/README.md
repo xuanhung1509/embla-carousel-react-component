@@ -55,7 +55,7 @@ import Carousel from 'embla-carousel-react-component';
 | Prop               | Type                  | Default                     | Description                                                               |
 | ------------------ | --------------------- | --------------------------- | ------------------------------------------------------------------------- |
 | **perView**        | `number`              | `required`                  | The number of slides per view                                             |
-| **gap**            | `string \| number`    | `1rem`                      | The spacing between slides                                                |
+| **gap**            | `string \| number`    | `"1rem"`                    | The spacing between slides                                                |
 | **options**        | `EmblaOptionsType`    | See [here](#options)        | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)   |
 | **plugins**        | `EmblaPluginType[]`   |                             | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)       |
 | **PrevButton**     | `() => JSX.Element`   |                             | Previous Button component                                                 |
@@ -102,10 +102,10 @@ You can overwrite this by providing your own styles.
 
 ### Carousel.Dots
 
-| Prop                     | Type     | Default    | Description                                                         |
-| ------------------------ | -------- | ---------- | ------------------------------------------------------------------- |
-| **selectedClassName**    | `string` | `selected` | ClassName for selected state                                        |
-| **nonSelectedClassName** | `string` |            | ClassName for non-selected state (Tailwind CSS users may need this) |
+| Prop                     | Type     | Default      | Description                                                         |
+| ------------------------ | -------- | ------------ | ------------------------------------------------------------------- |
+| **selectedClassName**    | `string` | `"selected"` | ClassName for selected state                                        |
+| **nonSelectedClassName** | `string` |              | ClassName for non-selected state (Tailwind CSS users may need this) |
 
 > The component also exposes a `data-selected` attribute that you can use to conditionally apply different styles.
 
@@ -118,11 +118,11 @@ You can overwrite this by providing your own styles.
 
 ### Carousel.Thumb
 
-| Prop                     | Type     | Default    | Description                                                         |
-| ------------------------ | -------- | ---------- | ------------------------------------------------------------------- |
-| **index**                | `number` | `required` | The index of thumb item                                             |
-| **selectedClassName**    | `string` | `selected` | ClassName for selected state                                        |
-| **nonSelectedClassName** | `string` | `1rem`     | ClassName for non-selected state (Tailwind CSS users may need this) |
+| Prop                     | Type     | Default      | Description                                                         |
+| ------------------------ | -------- | ------------ | ------------------------------------------------------------------- |
+| **index**                | `number` | `required`   | The index of thumb item                                             |
+| **selectedClassName**    | `string` | `"selected"` | ClassName for selected state                                        |
+| **nonSelectedClassName** | `string` |              | ClassName for non-selected state (Tailwind CSS users may need this) |
 
 > The component also exposes a `data-selected` attribute that you can use to conditionally apply different styles.
 
