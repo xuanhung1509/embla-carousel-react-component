@@ -24,6 +24,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "prepublishOnly": "yarn build",
     "prepack": "json -I -f package.json -e \"delete this.dependencies; delete this.devDependencies\""
   },
   "dependencies": {
