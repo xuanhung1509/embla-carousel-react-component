@@ -56,7 +56,7 @@ type ThumbsProps = React.DetailedHTMLProps<
 };
 
 const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
-  ({ perView, gap = '1rem', children, ...otherProps }, ref) => {
+  ({ perView, gap = 8, children, ...otherProps }, ref) => {
     const { thumbsRef } = useCarouselContext();
     const stringifiedGap = typeof gap === 'number' ? `${gap}px` : gap;
 

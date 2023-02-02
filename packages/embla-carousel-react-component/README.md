@@ -52,17 +52,17 @@ import Carousel from 'embla-carousel-react-component';
 
 ### Carousel
 
-| Prop               | Type                  | Default                     | Description                                                               |
-| ------------------ | --------------------- | --------------------------- | ------------------------------------------------------------------------- |
-| **perView**        | `number`              | `required`                  | The number of slides per view                                             |
-| **gap**            | `string \| number`    | `"1rem"`                    | The spacing between slides                                                |
-| **options**        | `EmblaOptionsType`    | See [here](#options)        | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)   |
-| **plugins**        | `EmblaPluginType[]`   |                             | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)       |
-| **PrevButton**     | `() => JSX.Element`   |                             | Previous Button component                                                 |
-| **NextButton**     | `() => JSX.Element`   |                             | Next Button component                                                     |
-| **Dots**           | `() => JSX.Element`   |                             | Dot Indicators component                                                  |
-| **Thumbs**         | `() => JSX.Element`   |                             | Thumbs component                                                          |
-| **containerStyle** | `React.CSSProperties` | See [here](#containerstyle) | Customize the container's style. To use this prop, remove `perView` first |
+| Prop               | Type                  | Default                     | Description                                                                                   |
+| ------------------ | --------------------- | --------------------------- | --------------------------------------------------------------------------------------------- |
+| **perView**        | `number`              | `required`                  | The number of slides per view                                                                 |
+| **gap**            | `string \| number`    | `16`                        | The spacing between slides. String is interpreted as is. Number is interpreted as pixel unit. |
+| **options**        | `EmblaOptionsType`    | See [here](#options)        | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)                       |
+| **plugins**        | `EmblaPluginType[]`   |                             | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)                           |
+| **PrevButton**     | `() => JSX.Element`   |                             | Previous Button component                                                                     |
+| **NextButton**     | `() => JSX.Element`   |                             | Next Button component                                                                         |
+| **Dots**           | `() => JSX.Element`   |                             | Dot Indicators component                                                                      |
+| **Thumbs**         | `() => JSX.Element`   |                             | Thumbs component                                                                              |
+| **containerStyle** | `React.CSSProperties` | See [here](#containerstyle) | Customize the container's style. To use this prop, remove `perView` first.                    |
 
 #### `options`
 
@@ -111,10 +111,10 @@ You can overwrite this by providing your own styles.
 
 ### Carousel.Thumbs
 
-| Prop        | Type               | Default    | Description                   |
-| ----------- | ------------------ | ---------- | ----------------------------- |
-| **perView** | `number`           | `required` | The number of thumbs per view |
-| **gap**     | `string \| number` | `1rem`     | The spacing between thumbs    |
+| Prop        | Type               | Default    | Description                                                                                   |
+| ----------- | ------------------ | ---------- | --------------------------------------------------------------------------------------------- |
+| **perView** | `number`           | `required` | The number of thumbs per view                                                                 |
+| **gap**     | `string \| number` | `8`        | The spacing between thumbs. String is interpreted as is. Number is interpreted as pixel unit. |
 
 ### Carousel.Thumb
 

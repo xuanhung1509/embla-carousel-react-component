@@ -39,7 +39,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       Dots,
       Thumbs,
       perView,
-      gap = '1rem',
+      gap = 16,
       containerStyle = {
         display: 'grid',
         gridAutoFlow: 'column',
