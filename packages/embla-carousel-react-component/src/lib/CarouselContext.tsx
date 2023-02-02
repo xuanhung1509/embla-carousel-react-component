@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 import { EmblaOptionsType } from 'embla-carousel-react';
 
 type CarouselContextProps = {
-  gap: string;
+  stringifiedGap: string;
   options: EmblaOptionsType;
   canScrollPrev: boolean;
   canScrollNext: boolean;

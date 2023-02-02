@@ -55,7 +55,7 @@ import Carousel from 'embla-carousel-react-component';
 | Prop               | Type                  | Default                     | Description                                                               |
 | ------------------ | --------------------- | --------------------------- | ------------------------------------------------------------------------- |
 | **perView**        | `number`              | `required`                  | The number of slides per view                                             |
-| **gap**            | `string`              | `1rem`                      | The spacing between slides                                                |
+| **gap**            | `string \| number`    | `1rem`                      | The spacing between slides                                                |
 | **options**        | `EmblaOptionsType`    | See [here](#options)        | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)   |
 | **plugins**        | `EmblaPluginType[]`   |                             | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)       |
 | **PrevButton**     | `() => JSX.Element`   |                             | Previous Button component                                                 |
@@ -111,10 +111,10 @@ You can overwrite this by providing your own styles.
 
 ### Carousel.Thumbs
 
-| Prop        | Type     | Default    | Description                   |
-| ----------- | -------- | ---------- | ----------------------------- |
-| **perView** | `number` | `required` | The number of thumbs per view |
-| **gap**     | `string` | `1rem`     | The spacing between thumbs    |
+| Prop        | Type               | Default    | Description                   |
+| ----------- | ------------------ | ---------- | ----------------------------- |
+| **perView** | `number`           | `required` | The number of thumbs per view |
+| **gap**     | `string \| number` | `1rem`     | The spacing between thumbs    |
 
 ### Carousel.Thumb
 

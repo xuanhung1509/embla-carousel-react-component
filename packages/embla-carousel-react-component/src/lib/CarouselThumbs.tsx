@@ -52,12 +52,13 @@ type ThumbsProps = React.DetailedHTMLProps<
   HTMLDivElement
 > & {
   perView: number;
-  gap?: string;
+  gap?: string | number;
 };
 
 const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
   ({ perView, gap = '1rem', children, ...otherProps }, ref) => {
     const { thumbsRef } = useCarouselContext();
+    const stringifiedGap = typeof gap === 'number' ? `${gap}px` : gap;
 
     return (
       // eslint-disable-next-line react/jsx-props-no-spreading
@@ -68,7 +69,7 @@ const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
               display: 'grid',
               gridAutoFlow: 'column',
               gridAutoColumns: `${100 / perView}%`,
-              gap,
+              gap: stringifiedGap,
             }}
           >
             {children}

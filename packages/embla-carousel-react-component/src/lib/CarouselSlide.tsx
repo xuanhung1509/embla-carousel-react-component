@@ -8,14 +8,14 @@ type CarouselSlideProps = React.DetailedHTMLProps<
 
 const CarouselSlide = forwardRef<HTMLDivElement, CarouselSlideProps>(
   ({ style, children, ...otherProps }, ref) => {
-    const { gap, options } = useCarouselContext();
+    const { stringifiedGap, options } = useCarouselContext();
 
     return (
       <div
         ref={ref}
         style={{
           ...style,
-          [options.axis === 'y' ? 'paddingTop' : 'paddingLeft']: gap,
+          [options.axis === 'y' ? 'paddingTop' : 'paddingLeft']: stringifiedGap,
         }}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}

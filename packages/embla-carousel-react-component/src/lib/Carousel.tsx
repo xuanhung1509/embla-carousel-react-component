@@ -22,7 +22,7 @@ type CarouselProps = React.DetailedHTMLProps<
   HTMLDivElement
 > &
   (OnlyDefaultStyleProps | OnlyUserStyleProps) & {
-    gap?: string;
+    gap?: string | number;
     options?: EmblaOptionsType;
     plugins?: EmblaPluginType[];
     PrevButton?: () => JSX.Element;
@@ -112,9 +112,10 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       handleSelect();
     }, [emblaMainApi, emblaThumbsApi, Thumbs]);
 
+    const stringifiedGap = typeof gap === 'number' ? `${gap}px` : gap;
     const contextValue = useMemo(
       () => ({
-        gap,
+        stringifiedGap,
         options,
         canScrollPrev,
         canScrollNext,
@@ -127,7 +128,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         onThumbClick,
       }),
       [
-        gap,
+        stringifiedGap,
         options,
         canScrollPrev,
         canScrollNext,
@@ -152,7 +153,9 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
             <div
               style={{
                 ...containerStyle,
-                [options.axis === 'y' ? 'marginTop' : 'marginLeft']: `-${gap}`,
+                [options.axis === 'y'
+                  ? 'marginTop'
+                  : 'marginLeft']: `-${stringifiedGap}`,
               }}
             >
               {children}
