@@ -1,0 +1,1 @@
+../packages/embla-carousel-react-component/README.md
