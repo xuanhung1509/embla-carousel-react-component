@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/xuanhung1509/embla-carousel-react-component/issues"
   },
-  "homepage": "https://github.com/xuanhung1509/embla-carousel-react-component/blob/master/README.md",
+  "homepage": "https://github.com/xuanhung1509/embla-carousel-react-component/blob/master/packages/embla-carousel-react-component/README.md",
   "license": "MIT",
   "keywords": [
     "slider",
