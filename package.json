@@ -11,7 +11,9 @@
     "dev": "yarn workspace docs run dev",
     "build:lib": "yarn workspace embla-carousel-react-component run build",
     "build:docs": "yarn workspace docs run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "version:lib": "yarn workspace embla-carousel-react-component version",
+    "publish:lib": "yarn workspace embla-carousel-react-component publish --non-interactive"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
