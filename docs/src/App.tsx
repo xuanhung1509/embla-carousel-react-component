@@ -14,7 +14,7 @@ const App = () => (
       <main className='flex flex-col gap-8'>
         <TableOfContents />
         {examples.map(({ id, title, Component }) => (
-          <ExampleWrapper id={id} title={title}>
+          <ExampleWrapper key={id} id={id} title={title}>
             <Component />
           </ExampleWrapper>
         ))}
