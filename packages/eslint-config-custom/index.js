@@ -23,14 +23,16 @@ module.exports = {
     'import/prefer-default-export': 'warn',
     'react/jsx-no-useless-fragment': 'warn',
     'react/require-default-props': 'off',
-    'react-hooks/exhaustive-deps': 'warn',
+    'react/jsx-key': 'warn',
+    'react/self-closing-comp': 'warn',
     'react/function-component-definition': [
       'warn',
       {
-        namedComponents: ['arrow-function'],
-        unnamedComponents: ['arrow-function'],
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
       },
     ],
+    'react-hooks/exhaustive-deps': 'warn',
   },
   ignorePatterns: ['dist', 'node_modules', 'public'],
 };
