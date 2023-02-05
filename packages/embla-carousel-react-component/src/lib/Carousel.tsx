@@ -31,6 +31,15 @@ type CarouselProps = React.DetailedHTMLProps<
     Thumbs?: () => JSX.Element;
   };
 
+const useValidatePerView = (perView?: DefaultStyleProps['perView']) => {
+  useEffect(() => {
+    if (typeof perView !== 'undefined' && perView <= 0) {
+      // eslint-disable-next-line no-console
+      console.warn('"perView" must be greater than 0. Falling back to 1.');
+    }
+  }, [perView]);
+};
+
 const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
   (
     {
@@ -43,7 +52,10 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       containerStyle = {
         display: 'grid',
         gridAutoFlow: 'column',
-        gridAutoColumns: perView ? `${100 / perView}%` : '100%',
+        gridAutoColumns:
+          typeof perView !== 'undefined' && perView > 0
+            ? `${100 / perView}%`
+            : '100%',
       },
       options = {
         align: 'start',
@@ -56,6 +68,8 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     },
     ref,
   ) => {
+    useValidatePerView(perView);
+
     const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, plugins);
     const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
       containScroll: 'keepSnaps',
