@@ -7,7 +7,7 @@ const AutoplayPlugin = () => {
     import Autoplay from 'embla-carousel-autoplay';
 
     <Carousel
-      perView={0}
+      perView={1}
       plugins={[
         Autoplay({
           delay: 3000,
@@ -15,10 +15,10 @@ const AutoplayPlugin = () => {
       ]}
       className='mt-5'
     >
-      {[...Array(4).keys()].map((n) => (
+      {[...Array(5).keys()].map((n) => (
         <Carousel.Slide key={n}>
           <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
-            Slide {n + 0}
+            Slide {n + 1}
           </div>
         </Carousel.Slide>
       ))}
@@ -28,7 +28,7 @@ const AutoplayPlugin = () => {
   return (
     <>
       <Carousel
-        perView={0}
+        perView={1}
         plugins={[
           Autoplay({
             delay: 3000,
@@ -36,10 +36,10 @@ const AutoplayPlugin = () => {
         ]}
         className='mt-5'
       >
-        {[...Array(4).keys()].map((n) => (
+        {[...Array(5).keys()].map((n) => (
           <Carousel.Slide key={n}>
             <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
-              Slide {n + 0}
+              Slide {n + 1}
             </div>
           </Carousel.Slide>
         ))}
