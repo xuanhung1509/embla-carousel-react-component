@@ -30,6 +30,8 @@ type CarouselProps = React.DetailedHTMLProps<
     NextButton?: () => JSX.Element;
     Dots?: () => JSX.Element;
     Thumbs?: () => JSX.Element;
+    thumbsOptions?: EmblaOptionsType;
+    thumbsPlugins?: EmblaPluginType[];
   };
 
 const useValidatePerView = (perView?: DefaultStyleProps['perView']) => {
@@ -131,6 +133,11 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       NextButton,
       Dots,
       Thumbs,
+      thumbsOptions = {
+        containScroll: 'keepSnaps',
+        dragFree: true,
+      },
+      thumbsPlugins,
       children,
       ...otherProps
     },
@@ -140,10 +147,10 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     const stringifiedGap = typeof gap === 'number' ? `${gap}px` : gap;
 
     const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, plugins);
-    const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
-      containScroll: 'keepSnaps',
-      dragFree: true,
-    });
+    const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel(
+      thumbsOptions,
+      thumbsPlugins,
+    );
 
     const {
       canScrollPrev,

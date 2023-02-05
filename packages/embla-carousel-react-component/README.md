@@ -62,6 +62,8 @@ import Carousel from 'embla-carousel-react-component';
 | **NextButton**     | `() => JSX.Element`   |                             | Next Button component                                                                         |
 | **Dots**           | `() => JSX.Element`   |                             | Dot Indicators component                                                                      |
 | **Thumbs**         | `() => JSX.Element`   |                             | Thumbs component                                                                              |
+| **thumbsOptions**  | `EmblaOptionsType`    | See [here](#thumbsoptions)  | Options for Thumbs component                                                                  |
+| **thumbsPlugins**  | `EmblaPluginType[]`   |                             | Plugins for Thumbs component                                                                  |
 | **containerStyle** | `React.CSSProperties` | See [here](#containerstyle) | Customize the container's style. To use this prop, remove `perView` first.                    |
 
 #### `options`
@@ -115,6 +117,17 @@ You can overwrite this by providing your own styles.
 | ----------- | ------------------ | ---------- | --------------------------------------------------------------------------------------------- |
 | **perView** | `number`           | `required` | The number of thumbs per view                                                                 |
 | **gap**     | `string \| number` | `8`        | The spacing between thumbs. String is interpreted as is. Number is interpreted as pixel unit. |
+
+#### `thumbsOptions`
+
+Default options:
+
+```js
+{
+  containScroll: 'keepSnaps',
+  dragFree: true,
+}
+```
 
 ### Carousel.Thumb
 
