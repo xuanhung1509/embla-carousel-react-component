@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
-import { useCarouselContext } from './CarouselContext';
+import { useCarouselContext } from '../CarouselContext';
+import { useCarouselThumbsContext } from './CarouselThumbsContext';
 
 const classnames = (...classes: Array<string | boolean | undefined>) =>
   classes.filter(Boolean).join(' ');
@@ -17,15 +18,17 @@ const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
   (
     {
       index,
-      className,
       selectedClassName = 'selected',
       nonSelectedClassName = '',
+      className,
+      style,
       children,
       ...otherProps
     },
     ref,
   ) => {
     const { selectedIndex, onThumbClick } = useCarouselContext();
+    const { stringifiedGap } = useCarouselThumbsContext();
     const selected = index === selectedIndex;
 
     return (
@@ -38,6 +41,10 @@ const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
           className,
           selected ? selectedClassName : nonSelectedClassName,
         )}
+        style={{
+          ...style,
+          paddingLeft: stringifiedGap,
+        }}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       >
@@ -47,37 +54,4 @@ const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
   },
 );
 
-type ThumbsProps = React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
-> & {
-  perView: number;
-  gap?: string | number;
-};
-
-const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
-  ({ perView, gap = 8, children, ...otherProps }, ref) => {
-    const { thumbsRef } = useCarouselContext();
-    const stringifiedGap = typeof gap === 'number' ? `${gap}px` : gap;
-
-    return (
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      <div ref={ref} {...otherProps}>
-        <div ref={thumbsRef} style={{ overflow: 'hidden' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridAutoFlow: 'column',
-              gridAutoColumns: `${100 / perView}%`,
-              gap: stringifiedGap,
-            }}
-          >
-            {children}
-          </div>
-        </div>
-      </div>
-    );
-  },
-);
-
-export { Thumb, Thumbs };
+export default Thumb;
