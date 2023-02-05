@@ -1,5 +1,6 @@
 import { forwardRef, useCallback, useEffect, useMemo, useState } from 'react';
 import useEmblaCarousel, {
+  EmblaCarouselType,
   EmblaOptionsType,
   EmblaPluginType,
 } from 'embla-carousel-react';
@@ -40,13 +41,76 @@ const useValidatePerView = (perView?: DefaultStyleProps['perView']) => {
   }, [perView]);
 };
 
+const useHandleCarousel = (
+  emblaMainApi: EmblaCarouselType | undefined,
+  emblaThumbsApi: EmblaCarouselType | undefined,
+  Thumbs: CarouselProps['Thumbs'],
+) => {
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaMainApi) emblaMainApi.scrollPrev();
+  }, [emblaMainApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaMainApi) emblaMainApi.scrollNext();
+  }, [emblaMainApi]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (emblaMainApi) emblaMainApi.scrollTo(index);
+    },
+    [emblaMainApi],
+  );
+
+  const onThumbClick = useCallback(
+    (index: number) => {
+      if (!emblaMainApi || !emblaThumbsApi) return;
+
+      if (emblaThumbsApi.clickAllowed()) emblaMainApi.scrollTo(index);
+    },
+    [emblaMainApi, emblaThumbsApi],
+  );
+
+  useEffect(() => {
+    if (!emblaMainApi) return;
+
+    const handleSelect = () => {
+      setCanScrollPrev(emblaMainApi.canScrollPrev());
+      setCanScrollNext(emblaMainApi.canScrollNext());
+
+      const selectedScrollSnap = emblaMainApi.selectedScrollSnap();
+      setSelectedIndex(selectedScrollSnap);
+
+      if (Thumbs && emblaThumbsApi) {
+        emblaThumbsApi.scrollTo(selectedScrollSnap);
+      }
+    };
+
+    setScrollSnaps(emblaMainApi.scrollSnapList());
+    emblaMainApi.on('select', handleSelect);
+    emblaMainApi.on('reInit', handleSelect);
+    handleSelect();
+  }, [emblaMainApi, emblaThumbsApi, Thumbs]);
+
+  return {
+    canScrollPrev,
+    canScrollNext,
+    selectedIndex,
+    scrollSnaps,
+    scrollPrev,
+    scrollNext,
+    scrollTo,
+    onThumbClick,
+  };
+};
+
 const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
   (
     {
-      PrevButton,
-      NextButton,
-      Dots,
-      Thumbs,
       perView,
       gap = 16,
       containerStyle = {
@@ -63,12 +127,17 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         containScroll: 'trimSnaps',
       },
       plugins,
+      PrevButton,
+      NextButton,
+      Dots,
+      Thumbs,
       children,
       ...otherProps
     },
     ref,
   ) => {
     useValidatePerView(perView);
+    const stringifiedGap = typeof gap === 'number' ? `${gap}px` : gap;
 
     const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options, plugins);
     const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
@@ -76,57 +145,17 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       dragFree: true,
     });
 
-    const [canScrollPrev, setCanScrollPrev] = useState(false);
-    const [canScrollNext, setCanScrollNext] = useState(true);
-    const [selectedIndex, setSelectedIndex] = useState(0);
-    const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+    const {
+      canScrollPrev,
+      canScrollNext,
+      selectedIndex,
+      scrollSnaps,
+      scrollPrev,
+      scrollNext,
+      scrollTo,
+      onThumbClick,
+    } = useHandleCarousel(emblaMainApi, emblaThumbsApi, Thumbs);
 
-    const scrollPrev = useCallback(() => {
-      if (emblaMainApi) emblaMainApi.scrollPrev();
-    }, [emblaMainApi]);
-
-    const scrollNext = useCallback(() => {
-      if (emblaMainApi) emblaMainApi.scrollNext();
-    }, [emblaMainApi]);
-
-    const scrollTo = useCallback(
-      (index: number) => {
-        if (emblaMainApi) emblaMainApi.scrollTo(index);
-      },
-      [emblaMainApi],
-    );
-
-    const onThumbClick = useCallback(
-      (index: number) => {
-        if (!emblaMainApi || !emblaThumbsApi) return;
-
-        if (emblaThumbsApi.clickAllowed()) emblaMainApi.scrollTo(index);
-      },
-      [emblaMainApi, emblaThumbsApi],
-    );
-
-    useEffect(() => {
-      if (!emblaMainApi) return;
-
-      const handleSelect = () => {
-        setCanScrollPrev(emblaMainApi.canScrollPrev());
-        setCanScrollNext(emblaMainApi.canScrollNext());
-
-        const selectedScrollSnap = emblaMainApi.selectedScrollSnap();
-        setSelectedIndex(selectedScrollSnap);
-
-        if (Thumbs && emblaThumbsApi) {
-          emblaThumbsApi.scrollTo(selectedScrollSnap);
-        }
-      };
-
-      setScrollSnaps(emblaMainApi.scrollSnapList());
-      emblaMainApi.on('select', handleSelect);
-      emblaMainApi.on('reInit', handleSelect);
-      handleSelect();
-    }, [emblaMainApi, emblaThumbsApi, Thumbs]);
-
-    const stringifiedGap = typeof gap === 'number' ? `${gap}px` : gap;
     const contextValue = useMemo(
       () => ({
         stringifiedGap,
