@@ -2,16 +2,17 @@ import Carousel from 'embla-carousel-react-component';
 import Code from '../components/Code';
 
 const MyThumbs = () => (
-  <Carousel.Thumbs perView={3.5} gap={8} className='mt-4'>
+  <Carousel.Thumbs perView={3} gap={8} className='mt-2'>
     {[...Array(5).keys()].map((n) => (
       <Carousel.Thumb
         key={n}
         index={n}
-        className='h-24 rounded bg-slate-300'
         selectedClassName='opacity-100'
         nonSelectedClassName='opacity-50'
       >
-        {n + 1}
+        <div className='flex h-24 items-center justify-center rounded bg-slate-300 p-4'>
+          {n + 1}
+        </div>
       </Carousel.Thumb>
     ))}
   </Carousel.Thumbs>
@@ -20,16 +21,17 @@ const MyThumbs = () => (
 const Thumbnails = () => {
   const codeBlock = `
     const MyThumbs = () => (
-      <Carousel.Thumbs perView={3.5} gap={8} className='mt-4'>
+      <Carousel.Thumbs perView={3} gap={8} className='mt-2'>
         {[...Array(5).keys()].map((n) => (
           <Carousel.Thumb
             key={n}
             index={n}
-            className='h-24 rounded bg-slate-300'
             selectedClassName='opacity-100'
             nonSelectedClassName='opacity-50'
           >
-            {n + 1}
+            <div className='flex h-24 items-center justify-center rounded bg-slate-300 p-4'>
+              {n + 1}
+            </div>
           </Carousel.Thumb>
         ))}
       </Carousel.Thumbs>
