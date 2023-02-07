@@ -23,9 +23,9 @@ const MyNextButton = () => (
   </Carousel.NextButton>
 );
 
-const MyDots = () => (
+const MyIndicators = () => (
   <div className='absolute bottom-4 left-0 right-0 z-10 flex items-center justify-center gap-2'>
-    <Carousel.Dots
+    <Carousel.Indicators
       className='h-2 w-5 rounded'
       selectedClassName='bg-slate-900'
       nonSelectedClassName='bg-slate-400'
@@ -57,9 +57,9 @@ const ArrowsAndDots = () => {
       </Carousel.NextButton>
     );
     
-    const MyDots = () => (
+    const MyIndicators = () => (
       <div className='absolute bottom-4 left-0 right-0 z-10 flex items-center justify-center gap-2'>
-        <Carousel.Dots
+        <Carousel.Indicators
           className='h-2 w-5 rounded'
           selectedClassName='bg-slate-900'
           nonSelectedClassName='bg-slate-400'
@@ -73,7 +73,7 @@ const ArrowsAndDots = () => {
           perView={1}
           PrevButton={MyPrevButton}
           NextButton={MyNextButton}
-          Dots={MyDots}
+          Indicators={MyIndicators}
           className='relative mt-4'
         >
           {[...Array(5).keys()].map((n) => (
@@ -94,7 +94,7 @@ const ArrowsAndDots = () => {
         perView={1}
         PrevButton={MyPrevButton}
         NextButton={MyNextButton}
-        Dots={MyDots}
+        Indicators={MyIndicators}
         className='relative mt-4'
       >
         {[...Array(5).keys()].map((n) => (
