@@ -48,10 +48,11 @@ const useHandleCarousel = (
   emblaThumbsApi: EmblaCarouselType | undefined,
   Thumbs: CarouselProps['Thumbs'],
 ) => {
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [slidesCount, setSlidesCount] = useState(0);
+
+  const canScrollPrev = emblaMainApi?.canScrollPrev() || false;
+  const canScrollNext = emblaMainApi?.canScrollNext() || false;
 
   const scrollPrev = useCallback(() => {
     if (emblaMainApi) emblaMainApi.scrollPrev();
@@ -81,9 +82,6 @@ const useHandleCarousel = (
     if (!emblaMainApi) return;
 
     const handleSelect = () => {
-      setCanScrollPrev(emblaMainApi.canScrollPrev());
-      setCanScrollNext(emblaMainApi.canScrollNext());
-
       const selected = emblaMainApi.selectedScrollSnap();
       setSelectedIndex(selected);
 
