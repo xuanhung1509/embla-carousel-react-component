@@ -1,9 +1,7 @@
 import { forwardRef } from 'react';
 import { useCarouselContext } from '../CarouselContext';
-import { useCarouselThumbsContext } from './CarouselThumbsContext';
-
-const classnames = (...classes: Array<string | boolean | undefined>) =>
-  classes.filter(Boolean).join(' ');
+import { useThumbsContext } from './ThumbsContext';
+import classnames from '../../utils/classnames';
 
 type ThumbProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -28,7 +26,7 @@ const Thumb = forwardRef<HTMLButtonElement, ThumbProps>(
     ref,
   ) => {
     const { selectedIndex, onThumbClick } = useCarouselContext();
-    const { stringifiedGap } = useCarouselThumbsContext();
+    const { stringifiedGap } = useThumbsContext();
     const selected = index === selectedIndex;
 
     return (

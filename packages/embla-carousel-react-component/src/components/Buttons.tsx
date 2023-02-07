@@ -1,8 +1,6 @@
 import { forwardRef } from 'react';
 import { useCarouselContext } from './CarouselContext';
-
-const classnames = (...classes: Array<string | boolean | undefined>) =>
-  classes.filter(Boolean).join(' ');
+import classnames from '../utils/classnames';
 
 type PrevButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,

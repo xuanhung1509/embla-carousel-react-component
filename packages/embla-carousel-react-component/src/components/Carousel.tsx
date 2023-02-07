@@ -4,7 +4,7 @@ import useEmblaCarousel, {
   EmblaOptionsType,
   EmblaPluginType,
 } from 'embla-carousel-react';
-import { CarouselContext } from './CarouselContext';
+import { CarouselProvider } from './CarouselContext';
 
 type Never<T> = { [P in keyof T]?: never };
 
@@ -28,7 +28,7 @@ type CarouselProps = React.DetailedHTMLProps<
     plugins?: EmblaPluginType[];
     PrevButton?: () => JSX.Element;
     NextButton?: () => JSX.Element;
-    Dots?: () => JSX.Element;
+    Indicators?: () => JSX.Element;
     Thumbs?: () => JSX.Element;
     thumbsOptions?: EmblaOptionsType;
     thumbsPlugins?: EmblaPluginType[];
@@ -131,7 +131,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       plugins,
       PrevButton,
       NextButton,
-      Dots,
+      Indicators,
       Thumbs,
       thumbsOptions = {
         containScroll: 'keepSnaps',
@@ -193,7 +193,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
     );
 
     return (
-      <CarouselContext.Provider value={contextValue}>
+      <CarouselProvider value={contextValue}>
         <div
           ref={ref}
           // eslint-disable-next-line react/jsx-props-no-spreading
@@ -214,10 +214,10 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
           {PrevButton && <PrevButton />}
           {NextButton && <NextButton />}
-          {Dots && <Dots />}
+          {Indicators && <Indicators />}
           {Thumbs && <Thumbs />}
         </div>
-      </CarouselContext.Provider>
+      </CarouselProvider>
     );
   },
 );

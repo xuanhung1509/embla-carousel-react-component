@@ -1,9 +1,7 @@
 import { useCarouselContext } from './CarouselContext';
+import classnames from '../utils/classnames';
 
-const classnames = (...classes: Array<string | boolean | undefined>) =>
-  classes.filter(Boolean).join(' ');
-
-type DotsProps = React.DetailedHTMLProps<
+type IndicatorsProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
@@ -11,11 +9,11 @@ type DotsProps = React.DetailedHTMLProps<
   nonSelectedClassName?: string;
 };
 
-const Dots = ({
+const Indicators = ({
   className,
   selectedClassName = 'selected',
   nonSelectedClassName = '',
-}: DotsProps) => {
+}: IndicatorsProps) => {
   const { selectedIndex, scrollSnaps, scrollTo } = useCarouselContext();
 
   return (
@@ -41,4 +39,4 @@ const Dots = ({
   );
 };
 
-export default Dots;
+export default Indicators;

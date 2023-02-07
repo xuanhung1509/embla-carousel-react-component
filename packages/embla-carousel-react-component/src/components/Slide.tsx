@@ -6,7 +6,7 @@ type CarouselSlideProps = React.DetailedHTMLProps<
   HTMLDivElement
 >;
 
-const CarouselSlide = forwardRef<HTMLDivElement, CarouselSlideProps>(
+const Slide = forwardRef<HTMLDivElement, CarouselSlideProps>(
   ({ style, children, ...otherProps }, ref) => {
     const { stringifiedGap, options } = useCarouselContext();
 
@@ -26,4 +26,4 @@ const CarouselSlide = forwardRef<HTMLDivElement, CarouselSlideProps>(
   },
 );
 
-export default CarouselSlide;
+export default Slide;

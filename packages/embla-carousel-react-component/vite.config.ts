@@ -13,8 +13,8 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/lib/index.ts'),
-      name: 'EmblaCarouselReactComponent',
+      entry: path.resolve(__dirname, 'src/components/index.ts'),
+      name: 'Carousel',
       formats: ['es', 'umd'],
       fileName: (format) => `embla-carousel-react-component.${format}.js`,
     },

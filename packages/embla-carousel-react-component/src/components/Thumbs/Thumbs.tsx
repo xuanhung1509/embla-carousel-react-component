@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useMemo } from 'react';
 import { useCarouselContext } from '../CarouselContext';
-import { CarouselThumbsContext } from './CarouselThumbsContext';
+import { ThumbsProvider } from './ThumbsContext';
 
 type ThumbsProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
@@ -34,7 +34,7 @@ const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
     );
 
     return (
-      <CarouselThumbsContext.Provider value={contextValue}>
+      <ThumbsProvider value={contextValue}>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <div ref={ref} {...otherProps}>
           <div ref={thumbsRef} style={{ overflow: 'hidden' }}>
@@ -50,7 +50,7 @@ const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
             </div>
           </div>
         </div>
-      </CarouselThumbsContext.Provider>
+      </ThumbsProvider>
     );
   },
 );
