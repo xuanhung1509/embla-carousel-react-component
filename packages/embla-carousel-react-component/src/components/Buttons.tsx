@@ -2,14 +2,14 @@ import { forwardRef } from 'react';
 import { useCarouselContext } from './CarouselContext';
 import classnames from '../utils/classnames';
 
-type PrevButtonProps = React.DetailedHTMLProps<
+type ButtonProps = React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
   disabledClassName?: string;
 };
 
-const PrevButton = forwardRef<HTMLButtonElement, PrevButtonProps>(
+const PrevButton = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { className, disabledClassName = 'disabled', children, ...otherProps },
     ref,
@@ -32,14 +32,7 @@ const PrevButton = forwardRef<HTMLButtonElement, PrevButtonProps>(
   },
 );
 
-type NextButtonProps = React.DetailedHTMLProps<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
-> & {
-  disabledClassName?: string;
-};
-
-const NextButton = forwardRef<HTMLButtonElement, NextButtonProps>(
+const NextButton = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { className, disabledClassName = 'disabled', children, ...otherProps },
     ref,
