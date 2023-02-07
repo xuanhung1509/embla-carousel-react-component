@@ -6,7 +6,6 @@ const DragFree = () => {
     <Carousel
       perView={2}
       options={{
-        slidesToScroll: 2,
         dragFree: true,
       }}
       className='mt-4'
@@ -26,7 +25,6 @@ const DragFree = () => {
       <Carousel
         perView={2}
         options={{
-          slidesToScroll: 2,
           dragFree: true,
         }}
         className='mt-4'
