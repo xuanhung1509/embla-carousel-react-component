@@ -14,24 +14,25 @@ const Indicators = ({
   selectedClassName = 'selected',
   nonSelectedClassName = '',
 }: IndicatorsProps) => {
-  const { selectedIndex, scrollSnaps, scrollTo } = useCarouselContext();
+  const { selectedIndex, slidesCount, scrollTo } = useCarouselContext();
 
   return (
     <>
-      {scrollSnaps.map((n, index) => {
+      {[...Array(slidesCount).keys()].map((_, index) => {
         const selected = index === selectedIndex;
 
         return (
           <button
-            key={n}
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
             type='button'
+            aria-label='dot-indicator'
             data-selected={selected}
-            onClick={() => scrollTo(index)}
             className={classnames(
               className,
               selected ? selectedClassName : nonSelectedClassName,
             )}
-            aria-label='dot'
+            onClick={() => scrollTo(index)}
           />
         );
       })}

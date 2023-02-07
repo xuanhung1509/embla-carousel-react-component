@@ -7,7 +7,7 @@ interface CarouselContextValue {
   canScrollPrev: boolean;
   canScrollNext: boolean;
   selectedIndex: number;
-  scrollSnaps: number[];
+  slidesCount: number;
   thumbsRef: React.LegacyRef<HTMLDivElement>;
   scrollPrev: () => void;
   scrollNext: () => void;

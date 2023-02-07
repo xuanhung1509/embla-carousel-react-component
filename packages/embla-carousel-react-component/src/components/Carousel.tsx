@@ -51,7 +51,7 @@ const useHandleCarousel = (
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const [slidesCount, setSlidesCount] = useState(0);
 
   const scrollPrev = useCallback(() => {
     if (emblaMainApi) emblaMainApi.scrollPrev();
@@ -84,15 +84,16 @@ const useHandleCarousel = (
       setCanScrollPrev(emblaMainApi.canScrollPrev());
       setCanScrollNext(emblaMainApi.canScrollNext());
 
-      const selectedScrollSnap = emblaMainApi.selectedScrollSnap();
-      setSelectedIndex(selectedScrollSnap);
+      const selected = emblaMainApi.selectedScrollSnap();
+      setSelectedIndex(selected);
 
       if (Thumbs && emblaThumbsApi) {
-        emblaThumbsApi.scrollTo(selectedScrollSnap);
+        emblaThumbsApi.scrollTo(selected);
       }
     };
 
-    setScrollSnaps(emblaMainApi.scrollSnapList());
+    setSlidesCount(emblaMainApi.scrollSnapList().length);
+
     emblaMainApi.on('select', handleSelect);
     emblaMainApi.on('reInit', handleSelect);
     handleSelect();
@@ -102,7 +103,7 @@ const useHandleCarousel = (
     canScrollPrev,
     canScrollNext,
     selectedIndex,
-    scrollSnaps,
+    slidesCount,
     scrollPrev,
     scrollNext,
     scrollTo,
@@ -156,7 +157,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       canScrollPrev,
       canScrollNext,
       selectedIndex,
-      scrollSnaps,
+      slidesCount,
       scrollPrev,
       scrollNext,
       scrollTo,
@@ -170,7 +171,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         canScrollPrev,
         canScrollNext,
         selectedIndex,
-        scrollSnaps,
+        slidesCount,
         thumbsRef: emblaThumbsRef,
         scrollPrev,
         scrollNext,
@@ -183,7 +184,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         canScrollPrev,
         canScrollNext,
         selectedIndex,
-        scrollSnaps,
+        slidesCount,
         emblaThumbsRef,
         scrollPrev,
         scrollNext,
