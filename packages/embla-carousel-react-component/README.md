@@ -35,12 +35,10 @@ yarn add embla-carousel-react-component
 ```js
 import Carousel from 'embla-carousel-react-component';
 
-<Carousel perView={1} className='mt-4'>
+<Carousel perView={1}>
   {[...Array(5).keys()].map((n) => (
     <Carousel.Slide key={n}>
-      <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
-        Slide {n + 1}
-      </div>
+      <div>Slide {n + 1}</div>
     </Carousel.Slide>
   ))}
 </Carousel>;
@@ -60,7 +58,7 @@ import Carousel from 'embla-carousel-react-component';
 | **plugins**        | `EmblaPluginType[]`   |                             | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)                           |
 | **PrevButton**     | `() => JSX.Element`   |                             | Previous Button component                                                                     |
 | **NextButton**     | `() => JSX.Element`   |                             | Next Button component                                                                         |
-| **Dots**           | `() => JSX.Element`   |                             | Dot Indicators component                                                                      |
+| **Indicators**     | `() => JSX.Element`   |                             | Dot Indicators component                                                                      |
 | **Thumbs**         | `() => JSX.Element`   |                             | Thumbs component                                                                              |
 | **thumbsOptions**  | `EmblaOptionsType`    | See [here](#thumbsoptions)  | Options for Thumbs component                                                                  |
 | **thumbsPlugins**  | `EmblaPluginType[]`   |                             | Plugins for Thumbs component                                                                  |
@@ -102,7 +100,7 @@ You can overwrite this by providing your own styles.
 
 > The components also expose a `data-disabled` attribute that you can use to conditionally apply different styles.
 
-### Carousel.Dots
+### Carousel.Indicators
 
 | Prop                     | Type     | Default      | Description                                                         |
 | ------------------------ | -------- | ------------ | ------------------------------------------------------------------- |
