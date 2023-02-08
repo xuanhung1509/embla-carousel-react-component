@@ -1,9 +1,9 @@
-interface ICode {
+interface CodeProps {
   block: any;
   lang: 'tsx' | 'css';
 }
 
-const Code = ({ block, lang }: ICode) => (
+const Code = ({ block, lang }: CodeProps) => (
   <pre>
     <code className={`language-${lang}`}>{block}</code>
   </pre>
