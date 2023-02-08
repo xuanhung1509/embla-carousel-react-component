@@ -7,6 +7,7 @@ import {
   Align,
   VariableWidths,
   YAxis,
+  Breakpoints,
   ArrowsAndDots,
   Thumbnails,
   AutoplayPlugin,
@@ -63,6 +64,11 @@ const examples: IExample[] = [
     id: 'y-axis',
     title: 'Y Axis',
     Component: YAxis,
+  },
+  {
+    id: 'breakpoints',
+    title: 'Breakpoints',
+    Component: Breakpoints,
   },
   {
     id: 'arrows-and-dots',
