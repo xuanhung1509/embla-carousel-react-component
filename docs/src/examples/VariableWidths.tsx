@@ -1,42 +1,42 @@
 import Carousel from 'embla-carousel-react-component';
 import Code from '../components/Code';
 
-const RightToLeft = () => {
+const VariableWidths = () => {
   const codeBlock = `
+    const slideSizes: number[] = [60, 40, 30, 90, 35, 55, 85, 46, 30];
+
     <Carousel
+      perView='custom'
       options={{
-        direction: 'rtl',
+        align: 'center',
       }}
       className='mt-4'
-      style={{
-        direction: 'rtl',
-      }}
     >
-      {[...Array(5).keys()].map((n) => (
-        <Carousel.Slide key={n}>
+      {slideSizes.map((size, index) => (
+        <Carousel.Slide key={size} size={\`\${size}%\`}>
           <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
-            Slide {n + 1}
+            Slide {index + 1}
           </div>
         </Carousel.Slide>
       ))}
     </Carousel>
   `;
 
+  const slideSizes: number[] = [60, 40, 30, 90, 35, 55, 85, 46, 30];
+
   return (
     <>
       <Carousel
+        perView='custom'
         options={{
-          direction: 'rtl',
+          align: 'center',
         }}
         className='mt-4'
-        style={{
-          direction: 'rtl',
-        }}
       >
-        {[...Array(5).keys()].map((n) => (
-          <Carousel.Slide key={n}>
+        {slideSizes.map((size, index) => (
+          <Carousel.Slide key={size} size={`${size}%`}>
             <div className='h-40 w-full rounded-md bg-slate-300 p-4'>
-              Slide {n + 1}
+              Slide {index + 1}
             </div>
           </Carousel.Slide>
         ))}
@@ -46,4 +46,4 @@ const RightToLeft = () => {
   );
 };
 
-export default RightToLeft;
+export default VariableWidths;

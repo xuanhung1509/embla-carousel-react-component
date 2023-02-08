@@ -7,7 +7,6 @@ const AutoplayPlugin = () => {
     import Autoplay from 'embla-carousel-autoplay';
 
     <Carousel
-      perView={1}
       plugins={[
         Autoplay({
           delay: 3000,
@@ -28,7 +27,6 @@ const AutoplayPlugin = () => {
   return (
     <>
       <Carousel
-        perView={1}
         plugins={[
           Autoplay({
             delay: 3000,

@@ -70,7 +70,6 @@ const ArrowsAndDots = () => {
     const MyCarousel = () => (
       <div>
         <Carousel
-          perView={1}
           PrevButton={MyPrevButton}
           NextButton={MyNextButton}
           Indicators={MyIndicators}
@@ -91,7 +90,6 @@ const ArrowsAndDots = () => {
   return (
     <>
       <Carousel
-        perView={1}
         PrevButton={MyPrevButton}
         NextButton={MyNextButton}
         Indicators={MyIndicators}

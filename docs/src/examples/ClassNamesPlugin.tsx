@@ -7,7 +7,6 @@ const ClassNamesPlugin = () => {
     import ClassNames from 'embla-carousel-class-names';
 
     <Carousel
-      perView={1}
       plugins={[
         ClassNames({
           draggable: 'cursor-grab',
@@ -29,7 +28,6 @@ const ClassNamesPlugin = () => {
   return (
     <>
       <Carousel
-        perView={1}
         plugins={[
           ClassNames({
             draggable: 'cursor-grab',
