@@ -1,5 +1,6 @@
 import {
   Default,
+  Loop,
   RightToLeft,
   SlidesToScroll,
   DragFree,
@@ -27,6 +28,11 @@ const examples: IExample[] = [
     id: 'default',
     title: 'Default',
     Component: Default,
+  },
+  {
+    id: 'loop',
+    title: 'Loop',
+    Component: Loop,
   },
   {
     id: 'right-to-left',

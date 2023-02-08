@@ -1,4 +1,5 @@
 import Default from './Default';
+import Loop from './Loop';
 import RightToLeft from './RightToLeft';
 import SlidesToScroll from './SlidesToScroll';
 import DragFree from './DragFree';
@@ -13,6 +14,7 @@ import WheelGesturesPlugin from './WheelGesturesPlugin';
 
 export {
   Default,
+  Loop,
   RightToLeft,
   SlidesToScroll,
   DragFree,
