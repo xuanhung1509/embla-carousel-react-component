@@ -14,7 +14,7 @@ An easy-to-use carousel component based on Embla Carousel for React.
 Embla Carousel is completedly unopinionated about the way you styles the carousels, including the slide container's layout.
 If you want to reuse the carousels with a different number of slides per view, redeclaration of the container's style is needed, which's not optimal for reusability.
 
-To solve the problem, the component comes with [minimal styles](#containerstyle) needed to layout the container.
+To solve the problem, the component comes with minimal styles needed to layout the container.
 
 Note that the component only covers [some common use cases](#examples). If you want to achieve extraordinary stuffs with Embla Carousel's internal API, you need to implement yourself.
 
@@ -35,7 +35,7 @@ yarn add embla-carousel-react-component
 ```js
 import Carousel from 'embla-carousel-react-component';
 
-<Carousel perView={1}>
+<Carousel>
   {[...Array(5).keys()].map((n) => (
     <Carousel.Slide key={n}>
       <div>Slide {n + 1}</div>
@@ -50,19 +50,19 @@ import Carousel from 'embla-carousel-react-component';
 
 ### Carousel
 
-| Prop               | Type                  | Default                     | Description                                                                                   |
-| ------------------ | --------------------- | --------------------------- | --------------------------------------------------------------------------------------------- |
-| **perView**        | `number`              | `required`                  | The number of slides per view                                                                 |
-| **gap**            | `string \| number`    | `16`                        | The spacing between slides. String is interpreted as is. Number is interpreted as pixel unit. |
-| **options**        | `EmblaOptionsType`    | See [here](#options)        | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)                       |
-| **plugins**        | `EmblaPluginType[]`   |                             | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)                           |
-| **PrevButton**     | `() => JSX.Element`   |                             | Previous Button component                                                                     |
-| **NextButton**     | `() => JSX.Element`   |                             | Next Button component                                                                         |
-| **Indicators**     | `() => JSX.Element`   |                             | Dot Indicators component                                                                      |
-| **Thumbs**         | `() => JSX.Element`   |                             | Thumbs component                                                                              |
-| **thumbsOptions**  | `EmblaOptionsType`    | See [here](#thumbsoptions)  | Options for Thumbs component                                                                  |
-| **thumbsPlugins**  | `EmblaPluginType[]`   |                             | Plugins for Thumbs component                                                                  |
-| **containerStyle** | `React.CSSProperties` | See [here](#containerstyle) | Customize the container's style. To use this prop, remove `perView` first.                    |
+| Prop               | Type                  | Default                    | Description                                                                                   |
+| ------------------ | --------------------- | -------------------------- | --------------------------------------------------------------------------------------------- |
+| **perView**        | `number \| "custom"`  | `1`                        | The number of slides per view. Pass "custom" if you want to customize the slide sizes later.  |
+| **containerStyle** | `React.CSSProperties` |                            | Customize the container's style                                                               |
+| **gap**            | `string \| number`    | `16`                       | The spacing between slides. String is interpreted as is. Number is interpreted as pixel unit. |
+| **options**        | `EmblaOptionsType`    | See [here](#options)       | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)                       |
+| **plugins**        | `EmblaPluginType[]`   |                            | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)                           |
+| **PrevButton**     | `() => JSX.Element`   |                            | Previous Button component                                                                     |
+| **NextButton**     | `() => JSX.Element`   |                            | Next Button component                                                                         |
+| **Indicators**     | `() => JSX.Element`   |                            | Dot Indicators component                                                                      |
+| **Thumbs**         | `() => JSX.Element`   |                            | Thumbs component                                                                              |
+| **thumbsOptions**  | `EmblaOptionsType`    | See [here](#thumbsoptions) | Options for Thumbs component                                                                  |
+| **thumbsPlugins**  | `EmblaPluginType[]`   |                            | Plugins for Thumbs component                                                                  |
 
 #### `options`
 
@@ -76,21 +76,13 @@ The component comes with a few opinionated options to ensure it works properly o
 }
 ```
 
-You can overwrite this by providing your own options.
-
-#### `containerStyle`
-
-The component use grid to layout the container.
-
-```js
-{
-  display: 'grid',
-  gridAutoFlow: 'column',
-  gridAutoColumns: perView ? `${100 / perView}%` : '100%',
-}
-```
-
 You can overwrite this by providing your own styles.
+
+### Carousel.Slide
+
+| Prop     | Type     | Default | Description                                                                                    |
+| -------- | -------- | ------- | ---------------------------------------------------------------------------------------------- |
+| **size** | `string` |         | The slide size. To you this option, you need to pass `perView="custom"` on Carousel component. |
 
 ### Carousel.PrevButton, Carousel.NextButton
 
@@ -111,10 +103,10 @@ You can overwrite this by providing your own styles.
 
 ### Carousel.Thumbs
 
-| Prop        | Type               | Default    | Description                                                                                   |
-| ----------- | ------------------ | ---------- | --------------------------------------------------------------------------------------------- |
-| **perView** | `number`           | `required` | The number of thumbs per view                                                                 |
-| **gap**     | `string \| number` | `8`        | The spacing between thumbs. String is interpreted as is. Number is interpreted as pixel unit. |
+| Prop        | Type               | Default | Description                                                                                   |
+| ----------- | ------------------ | ------- | --------------------------------------------------------------------------------------------- |
+| **perView** | `number`           | `1`     | The number of thumbs per view                                                                 |
+| **gap**     | `string \| number` | `8`     | The spacing between thumbs. String is interpreted as is. Number is interpreted as pixel unit. |
 
 #### `thumbsOptions`
 
