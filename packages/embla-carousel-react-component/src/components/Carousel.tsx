@@ -5,23 +5,23 @@ import useEmblaCarousel, {
   EmblaPluginType,
 } from 'embla-carousel-react';
 import { CarouselProvider } from './CarouselContext';
-import type { CarouselContextValue } from './CarouselContext';
 
 type CarouselProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
-> &
-  Pick<CarouselContextValue, 'perView' | 'options'> & {
-    containerStyle?: React.CSSProperties;
-    gap?: string | number;
-    plugins?: EmblaPluginType[];
-    PrevButton?: () => JSX.Element;
-    NextButton?: () => JSX.Element;
-    Indicators?: () => JSX.Element;
-    Thumbs?: () => JSX.Element;
-    thumbsOptions?: EmblaOptionsType;
-    thumbsPlugins?: EmblaPluginType[];
-  };
+> & {
+  perView?: number | 'custom';
+  containerStyle?: React.CSSProperties;
+  gap?: string | number;
+  options?: EmblaOptionsType;
+  plugins?: EmblaPluginType[];
+  PrevButton?: () => JSX.Element;
+  NextButton?: () => JSX.Element;
+  Indicators?: () => JSX.Element;
+  Thumbs?: () => JSX.Element;
+  thumbsOptions?: EmblaOptionsType;
+  thumbsPlugins?: EmblaPluginType[];
+};
 
 const useValidatePerView = (perView?: CarouselProps['perView']) => {
   useEffect(() => {
