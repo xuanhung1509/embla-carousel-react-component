@@ -5,26 +5,15 @@ import useEmblaCarousel, {
   EmblaPluginType,
 } from 'embla-carousel-react';
 import { CarouselProvider } from './CarouselContext';
-
-type Never<T> = { [P in keyof T]?: never };
-
-type DefaultStyleProps = {
-  perView: number;
-};
-type UserStyleProps = {
-  containerStyle: React.CSSProperties;
-};
-
-type OnlyDefaultStyleProps = DefaultStyleProps & Never<UserStyleProps>;
-type OnlyUserStyleProps = UserStyleProps & Never<DefaultStyleProps>;
+import type { CarouselContextValue } from './CarouselContext';
 
 type CarouselProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 > &
-  (OnlyDefaultStyleProps | OnlyUserStyleProps) & {
+  Pick<CarouselContextValue, 'perView' | 'options'> & {
+    containerStyle?: React.CSSProperties;
     gap?: string | number;
-    options?: EmblaOptionsType;
     plugins?: EmblaPluginType[];
     PrevButton?: () => JSX.Element;
     NextButton?: () => JSX.Element;
@@ -34,9 +23,9 @@ type CarouselProps = React.DetailedHTMLProps<
     thumbsPlugins?: EmblaPluginType[];
   };
 
-const useValidatePerView = (perView?: DefaultStyleProps['perView']) => {
+const useValidatePerView = (perView?: CarouselProps['perView']) => {
   useEffect(() => {
-    if (typeof perView !== 'undefined' && perView <= 0) {
+    if (typeof perView === 'number' && perView <= 0) {
       // eslint-disable-next-line no-console
       console.warn('"perView" must be greater than 0. Falling back to 1.');
     }
@@ -112,15 +101,11 @@ const useHandleCarousel = (
 const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
   (
     {
-      perView,
+      perView = 1,
       gap = 16,
       containerStyle = {
-        display: 'grid',
-        gridAutoFlow: 'column',
-        gridAutoColumns:
-          typeof perView !== 'undefined' && perView > 0
-            ? `${100 / perView}%`
-            : '100%',
+        display: 'flex',
+        flexDirection: 'row',
       },
       options = {
         align: 'start',
@@ -164,6 +149,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
 
     const contextValue = useMemo(
       () => ({
+        perView,
         stringifiedGap,
         options,
         canScrollPrev,
@@ -177,6 +163,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         onThumbClick,
       }),
       [
+        perView,
         stringifiedGap,
         options,
         canScrollPrev,

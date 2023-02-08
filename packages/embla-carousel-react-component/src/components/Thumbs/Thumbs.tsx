@@ -6,13 +6,13 @@ type ThumbsProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 > & {
-  perView: number;
+  perView?: number;
   gap?: string | number;
 };
 
 const useValidatePerView = (perView: ThumbsProps['perView']) => {
   useEffect(() => {
-    if (perView <= 0) {
+    if (typeof perView !== 'undefined' && perView <= 0) {
       // eslint-disable-next-line no-console
       console.warn('"perView" must be greater than 0. Falling back to 1.');
     }
@@ -20,7 +20,7 @@ const useValidatePerView = (perView: ThumbsProps['perView']) => {
 };
 
 const Thumbs = forwardRef<HTMLDivElement, ThumbsProps>(
-  ({ perView, gap = 8, children, ...otherProps }, ref) => {
+  ({ perView = 1, gap = 8, children, ...otherProps }, ref) => {
     useValidatePerView(perView);
 
     const { thumbsRef } = useCarouselContext();

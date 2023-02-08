@@ -2,6 +2,7 @@ import { EmblaOptionsType } from 'embla-carousel-react';
 import createSafeContext from '../helpers/createSafeContext';
 
 interface CarouselContextValue {
+  perView?: number | 'custom';
   stringifiedGap: string;
   options: EmblaOptionsType;
   canScrollPrev: boolean;
@@ -21,4 +22,5 @@ const errorMessage =
 const [CarouselProvider, useCarouselContext] =
   createSafeContext<CarouselContextValue>(errorMessage);
 
+export type { CarouselContextValue };
 export { CarouselProvider, useCarouselContext };
