@@ -9,7 +9,7 @@ import examples from './constants';
 
 const App = () => (
   <div className='relative'>
-    <div className='container mx-auto flex flex-col gap-8 py-8 px-4'>
+    <div className='container flex flex-col gap-8 py-8'>
       <Header />
       <main className='flex flex-col gap-8'>
         <TableOfContents />

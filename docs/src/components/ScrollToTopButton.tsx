@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ChevronUpIcon } from '@heroicons/react/20/solid';
 
 const useToggleVisibility = () => {
   const [visible, setVisible] = useState(false);
@@ -6,8 +7,8 @@ const useToggleVisibility = () => {
   useEffect(() => {
     const toggleVisibility = () => {
       if (
-        document.body.scrollTop > 20 ||
-        document.documentElement.scrollTop > 20
+        document.body.scrollTop > 500 ||
+        document.documentElement.scrollTop > 500
       ) {
         setVisible(true);
       } else {
@@ -42,20 +43,7 @@ const ScrollToTopButton = () => {
           title='Scroll to top'
           className='block h-12 w-12 rounded-full bg-slate-500 p-3 text-white shadow-lg'
         >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            fill='none'
-            viewBox='0 0 24 24'
-            strokeWidth='1.5'
-            stroke='currentColor'
-            className='h-6 w-6'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              d='M4.5 15.75l7.5-7.5 7.5 7.5'
-            />
-          </svg>
+          <ChevronUpIcon className='h-6 w-6' />
         </abbr>
       </button>
     );

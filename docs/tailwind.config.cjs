@@ -3,8 +3,11 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
-      padding: '2rem',
       center: true,
+      padding: {
+        DEFAULT: '1rem',
+        md: '2rem',
+      },
     },
     extend: {
       screens: {
