@@ -134,11 +134,13 @@ Default options:
 ### Basic
 
 - [Default](https://embla-carousel-react-component.vercel.app/#default)
+- [Loop](https://embla-carousel-react-component.vercel.app/#loop)
 - [Right To Left](https://embla-carousel-react-component.vercel.app/#right-to-left)
 - [Slides To Scroll](https://embla-carousel-react-component.vercel.app/#slides-to-scroll)
 - [Drag Free](https://embla-carousel-react-component.vercel.app/#drag-free)
 - [Align](https://embla-carousel-react-component.vercel.app/#align)
 - [VariableWidths](https://embla-carousel-react-component.vercel.app/#variable-widths)
+- [Breakpoints](https://embla-carousel-react-component.vercel.app/#breakpoints)
 - [YAxis](https://embla-carousel-react-component.vercel.app/#y-axis)
 - [Arrows and Dots](https://embla-carousel-react-component.vercel.app/#arrows-and-dots)
 - [Thumbnails](https://embla-carousel-react-component.vercel.app/#thumbnails)
