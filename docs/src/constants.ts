@@ -13,6 +13,8 @@ import {
   AutoplayPlugin,
   ClassNamesPlugin,
   WheelGesturesPlugin,
+  ScrollProgress,
+  Parallax,
 } from './examples';
 
 export interface IBaseExample {
@@ -94,6 +96,16 @@ const examples: IExample[] = [
     id: 'wheel-gestures-plugin',
     title: 'Wheel Gestures',
     Component: WheelGesturesPlugin,
+  },
+  {
+    id: 'scroll-progress',
+    title: 'Scroll Progress',
+    Component: ScrollProgress,
+  },
+  {
+    id: 'parallax',
+    title: 'Parallax',
+    Component: Parallax,
   },
 ];
 

@@ -12,6 +12,8 @@ import Thumbnails from './Thumbnails';
 import AutoplayPlugin from './AutoplayPlugin';
 import ClassNamesPlugin from './ClassNamesPlugin';
 import WheelGesturesPlugin from './WheelGesturesPlugin';
+import ScrollProgress from './ScrollProgress';
+import Parallax from './Parallax';
 
 export {
   Default,
@@ -28,4 +30,6 @@ export {
   AutoplayPlugin,
   ClassNamesPlugin,
   WheelGesturesPlugin,
+  ScrollProgress,
+  Parallax,
 };
