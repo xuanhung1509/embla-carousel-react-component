@@ -21,6 +21,7 @@ type CarouselProps = React.DetailedHTMLProps<
   Thumbs?: () => JSX.Element;
   thumbsOptions?: EmblaOptionsType;
   thumbsPlugins?: EmblaPluginType[];
+  getEmblaApi?: (embla: EmblaCarouselType) => void;
 };
 
 const useValidatePerView = (perView?: CarouselProps['perView']) => {
@@ -36,6 +37,7 @@ const useHandleCarousel = (
   emblaMainApi: EmblaCarouselType | undefined,
   emblaThumbsApi: EmblaCarouselType | undefined,
   Thumbs: CarouselProps['Thumbs'],
+  getEmblaApi: CarouselProps['getEmblaApi'],
 ) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [slidesCount, setSlidesCount] = useState(0);
@@ -70,6 +72,8 @@ const useHandleCarousel = (
   useEffect(() => {
     if (!emblaMainApi) return;
 
+    getEmblaApi?.(emblaMainApi);
+
     const handleSelect = () => {
       const selected = emblaMainApi.selectedScrollSnap();
       setSelectedIndex(selected);
@@ -84,7 +88,7 @@ const useHandleCarousel = (
     emblaMainApi.on('select', handleSelect);
     emblaMainApi.on('reInit', handleSelect);
     handleSelect();
-  }, [emblaMainApi, emblaThumbsApi, Thumbs]);
+  }, [emblaMainApi, emblaThumbsApi, Thumbs, getEmblaApi]);
 
   return {
     canScrollPrev,
@@ -122,6 +126,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
         dragFree: true,
       },
       thumbsPlugins,
+      getEmblaApi,
       children,
       ...otherProps
     },
@@ -145,7 +150,7 @@ const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
       scrollNext,
       scrollTo,
       onThumbClick,
-    } = useHandleCarousel(emblaMainApi, emblaThumbsApi, Thumbs);
+    } = useHandleCarousel(emblaMainApi, emblaThumbsApi, Thumbs, getEmblaApi);
 
     const contextValue = useMemo(
       () => ({
