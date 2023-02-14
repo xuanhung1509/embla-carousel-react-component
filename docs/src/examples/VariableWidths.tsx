@@ -3,7 +3,7 @@ import Code from '../components/Code';
 
 const VariableWidths = () => {
   const codeBlock = `
-    const slideSizes: number[] = [60, 40, 30, 90, 35, 55, 85, 46, 30];
+    const slideSizes: number[] = [60, 40, 30, 90, 35, 55, 85, 46, 32];
 
     <Carousel
       perView='custom'
@@ -22,7 +22,7 @@ const VariableWidths = () => {
     </Carousel>
   `;
 
-  const slideSizes: number[] = [60, 40, 30, 90, 35, 55, 85, 46, 30];
+  const slideSizes: number[] = [60, 40, 30, 90, 35, 55, 85, 46, 32];
 
   return (
     <>
