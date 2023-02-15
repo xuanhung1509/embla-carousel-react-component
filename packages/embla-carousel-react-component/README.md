@@ -1,33 +1,38 @@
 # Embla Carousel React Component
 
-An easy-to-use carousel component based on Embla Carousel for React.
+A lightweight carousel library for React, based on [Embla Carousel](https://www.npmjs.com/package/embla-carousel-react).
 
-- [Motivation](#motivation)
+- [Features](#features)
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [Component API](#component-api)
 - [Examples](#examples)
+- [Acknowledgement](#acknowledgement)
 - [License](#license)
 
-## Motivation
+## Features
 
-Embla Carousel is completedly unopinionated about the way you styles the carousels, including the slide container's layout.
-If you want to reuse the carousels with a different number of slides per view, redeclaration of the container's style is needed, which's not optimal for reusability.
+This library helps build carousels with declarative API.
+Easy to use, yet still powerful when needed.
 
-To solve the problem, the component comes with minimal styles needed to layout the container.
+- Comparison with `Embla Carousel React`:
 
-Note that the component only covers [some common use cases](#examples). If you want to achieve extraordinary stuffs with Embla Carousel's internal API, you need to implement yourself.
+  You need to rely on external CSS to lay out the slide container. It's not optimal in case you want to reuse the carousel somewhere with different slide sizes.
+
+  This library comes with minimal styles needed to layout the grid, giving developers the ability to define the slide sizes in the component itself, while leaving the rest completely unstyled.
+
+- Comparison with `@mantine/carousel`:
+
+  `@mantine/carousel` introduces its own way to define carousel options. In contrast, this library gives you a familiar experience just like working with the base `Embla Carousel React`.
+
+  The former comes with limited customization on controller components (Prev/Next Buttons or Indicator Dots) as they're tied to the Carousel. This library allows you to fully customize how those components look.
+
+  This library also comes with a thumbs component if you need to build a product gallery for an e-commerce use case.
 
 ## Installation
 
-To get started, install the component via `npm` or `yarn`:
-
 ```sh
 npm install embla-carousel-react-component
-```
-
-```sh
-yarn add embla-carousel-react-component
 ```
 
 ## Basic Usage
@@ -50,19 +55,20 @@ import Carousel from 'embla-carousel-react-component';
 
 ### Carousel
 
-| Prop               | Type                  | Default                    | Description                                                                                   |
-| ------------------ | --------------------- | -------------------------- | --------------------------------------------------------------------------------------------- |
-| **perView**        | `number \| "custom"`  | `1`                        | The number of slides per view. Pass "custom" if you want to customize the slide sizes later.  |
-| **containerStyle** | `React.CSSProperties` |                            | Customize the container's style                                                               |
-| **gap**            | `string \| number`    | `16`                       | The spacing between slides. String is interpreted as is. Number is interpreted as pixel unit. |
-| **options**        | `EmblaOptionsType`    | See [here](#options)       | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)                       |
-| **plugins**        | `EmblaPluginType[]`   |                            | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)                           |
-| **PrevButton**     | `() => JSX.Element`   |                            | Previous Button component                                                                     |
-| **NextButton**     | `() => JSX.Element`   |                            | Next Button component                                                                         |
-| **Indicators**     | `() => JSX.Element`   |                            | Dot Indicators component                                                                      |
-| **Thumbs**         | `() => JSX.Element`   |                            | Thumbs component                                                                              |
-| **thumbsOptions**  | `EmblaOptionsType`    | See [here](#thumbsoptions) | Options for Thumbs component                                                                  |
-| **thumbsPlugins**  | `EmblaPluginType[]`   |                            | Plugins for Thumbs component                                                                  |
+| Prop               | Type                                 | Default                    | Description                                                                                   |
+| ------------------ | ------------------------------------ | -------------------------- | --------------------------------------------------------------------------------------------- |
+| **perView**        | `number \| "custom"`                 | `1`                        | The number of slides per view. Pass "custom" if you want to customize the slide sizes later.  |
+| **containerStyle** | `React.CSSProperties`                |                            | Customize the container's style                                                               |
+| **gap**            | `string \| number`                   | `16`                       | The spacing between slides. String is interpreted as is. Number is interpreted as pixel unit. |
+| **options**        | `EmblaOptionsType`                   | See [here](#options)       | [Embla Carousel's options](https://www.embla-carousel.com/api/options/)                       |
+| **plugins**        | `EmblaPluginType[]`                  |                            | [Embla Carousel's plugins](https://www.embla-carousel.com/plugins/)                           |
+| **PrevButton**     | `() => JSX.Element`                  |                            | Previous Button component                                                                     |
+| **NextButton**     | `() => JSX.Element`                  |                            | Next Button component                                                                         |
+| **Indicators**     | `() => JSX.Element`                  |                            | Dot Indicators component                                                                      |
+| **Thumbs**         | `() => JSX.Element`                  |                            | Thumbs component                                                                              |
+| **thumbsOptions**  | `EmblaOptionsType`                   | See [here](#thumbsoptions) | Options for Thumbs component                                                                  |
+| **thumbsPlugins**  | `EmblaPluginType[]`                  |                            | Plugins for Thumbs component                                                                  |
+| **getEmblaApi**    | `(embla: EmblaCarouselType) => void` |                            | Access Embla API for advanced use cases                                                       |
 
 #### `options`
 
@@ -86,9 +92,9 @@ You can overwrite this by providing your own styles.
 
 ### Carousel.PrevButton, Carousel.NextButton
 
-| Prop                  | Type     | Default    | Description                  |
-| --------------------- | -------- | ---------- | ---------------------------- |
-| **disabledClassName** | `string` | `disabled` | ClassName for disabled state |
+| Prop                  | Type     | Default      | Description                  |
+| --------------------- | -------- | ------------ | ---------------------------- |
+| **disabledClassName** | `string` | `"disabled"` | ClassName for disabled state |
 
 > The components also expose a `data-disabled` attribute that you can use to conditionally apply different styles.
 
@@ -140,16 +146,26 @@ Default options:
 - [Drag Free](https://embla-carousel-react-component.vercel.app/#drag-free)
 - [Align](https://embla-carousel-react-component.vercel.app/#align)
 - [VariableWidths](https://embla-carousel-react-component.vercel.app/#variable-widths)
-- [Breakpoints](https://embla-carousel-react-component.vercel.app/#breakpoints)
 - [YAxis](https://embla-carousel-react-component.vercel.app/#y-axis)
-- [Arrows and Dots](https://embla-carousel-react-component.vercel.app/#arrows-and-dots)
-- [Thumbnails](https://embla-carousel-react-component.vercel.app/#thumbnails)
 
 ### Plugins
 
 - [Autoplay](https://embla-carousel-react-component.vercel.app/#autoplay-plugin)
 - [Class Names](https://embla-carousel-react-component.vercel.app/#class-names-plugin)
 - [Wheel Gestures](https://embla-carousel-react-component.vercel.app/#wheel-gestures-plugin)
+
+### Others
+
+- [Responsive](https://embla-carousel-react-component.vercel.app/#responsive)
+- [Arrows and Dots](https://embla-carousel-react-component.vercel.app/#arrows-and-dots)
+- [Thumbnails](https://embla-carousel-react-component.vercel.app/#thumbnails)
+- [Scroll Progress](https://embla-carousel-react-component.vercel.app/#scroll-progress)
+- [Parallax](https://embla-carousel-react-component.vercel.app/#parallax)
+
+## Acknowledgement
+
+- This library cannot be possible without `Embla Carousel React`. It really is a lightweight and sleek library for building carousels.
+- This library also takes `@mantine/carousel` as a reference, especially the idea of exposing `emblaApi` to the outside.
 
 ## License
 
