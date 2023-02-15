@@ -6,7 +6,7 @@ import DragFree from './DragFree';
 import Align from './Align';
 import VariableWidths from './VariableWidths';
 import YAxis from './YAxis';
-import Breakpoints from './Breakpoints';
+import Responsive from './Responsive';
 import ArrowsAndDots from './ArrowsAndDots';
 import Thumbnails from './Thumbnails';
 import AutoplayPlugin from './AutoplayPlugin';
@@ -24,7 +24,7 @@ export {
   Align,
   VariableWidths,
   YAxis,
-  Breakpoints,
+  Responsive,
   ArrowsAndDots,
   Thumbnails,
   AutoplayPlugin,

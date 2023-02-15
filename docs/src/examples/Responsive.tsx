@@ -2,7 +2,7 @@ import Carousel from 'embla-carousel-react-component';
 import useMediaQuery from '../hooks/useMediaQuery';
 import Code from '../components/Code';
 
-const Breakpoints = () => {
+const Responsive = () => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const isTablet = useMediaQuery('(min-width: 640px)');
   const perViewForTabletDown = isTablet ? 2 : 1;
@@ -43,4 +43,4 @@ const Breakpoints = () => {
   );
 };
 
-export default Breakpoints;
+export default Responsive;
