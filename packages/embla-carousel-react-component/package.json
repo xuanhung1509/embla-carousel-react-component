@@ -1,6 +1,6 @@
 {
   "name": "embla-carousel-react-component",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "author": "Xuan Hung <vu.xuanhung1509@gmail.com>",
   "description": "A lightweight carousel library for React, based on Embla Carousel",
   "repository": {
