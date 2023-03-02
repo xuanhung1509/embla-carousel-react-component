@@ -161,6 +161,11 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.20.13.tgz#ddf1eb5a813588d2fb1692b70c6fce75b945c088"
   integrity sha512-gFDLKMfpiXCsjt4za2JA9oTMn70CeseCehb11kRZgvd7+F67Hih3OHOK24cRrWECJ/ljfPGac6ygXAs/C8kIvw==
 
+"@babel/parser@^7.20.15":
+  version "7.21.2"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.21.2.tgz#dacafadfc6d7654c3051a66d6fe55b6cb2f2a0b3"
+  integrity sha512-URpaIJQwEkEC2T9Kn+Ai6Xe/02iNaVCuT/PtoRz3GPVJVDpPd7mLo+VddTbhCRU9TXqW5mSrQfXZyi8kDKOVpQ==
+
 "@babel/plugin-transform-react-jsx-self@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.18.6.tgz#3849401bab7ae8ffa1e3e5687c94a753fc75bda7"
@@ -756,12 +761,12 @@
     "@swc/core-win32-ia32-msvc" "1.3.29"
     "@swc/core-win32-x64-msvc" "1.3.29"
 
-"@ts-morph/common@~0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@ts-morph/common/-/common-0.17.0.tgz#de0d405df10857907469fef8d9363893b4163fd1"
-  integrity sha512-RMSSvSfs9kb0VzkvQ2NWobwnj7TxCA9vI/IjR9bDHqgAyVbu2T0DN4wiKVqomyDWqO7dPr/tErSfq7urQ1Q37g==
+"@ts-morph/common@~0.18.0":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@ts-morph/common/-/common-0.18.1.tgz#ca40c3a62c3f9e17142e0af42633ad63efbae0ec"
+  integrity sha512-RVE+zSRICWRsfrkAw5qCAK+4ZH9kwEFv5h0+/YeHTLieWP7F4wWq4JsKFuNWG+fYh/KF+8rAtgdj5zb2mm+DVA==
   dependencies:
-    fast-glob "^3.2.11"
+    fast-glob "^3.2.12"
     minimatch "^5.1.0"
     mkdirp "^1.0.4"
     path-browserify "^1.0.1"
@@ -2061,7 +2066,7 @@ fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
-fast-glob@^3.2.11, fast-glob@^3.2.12, fast-glob@^3.2.9:
+fast-glob@^3.2.12, fast-glob@^3.2.9:
   version "3.2.12"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.12.tgz#7f39ec99c2e6ab030337142da9e0c18f37afae80"
   integrity sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==
@@ -2955,6 +2960,13 @@ magic-string@^0.27.0:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.13"
 
+magic-string@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.29.0.tgz#f034f79f8c43dba4ae1730ffb5e8c4e084b16cf3"
+  integrity sha512-WcfidHrDjMY+eLjlU+8OvwREqHwpgCeKVBUpQ3OhYYuvfaYCUgcbuBzappNzZvg/v8onU3oQj+BYpkOJe9Iw4Q==
+  dependencies:
+    "@jridgewell/sourcemap-codec" "^1.4.13"
+
 make-error@^1.1.1:
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
@@ -3403,10 +3415,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-prettier-plugin-tailwindcss@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.2.2.tgz#61f4437936c79c8cc2915f31b4bd512605177239"
-  integrity sha512-5RjUbWRe305pUpc48MosoIp6uxZvZxrM6GyOgsbGLTce+ehePKNm7ziW2dLG2air9aXbGuXlHVSQQw4Lbosq3w==
+prettier-plugin-tailwindcss@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.2.3.tgz#b68a1de10056fc84055426af132c2697bea0955c"
+  integrity sha512-s2N5Dh7Ao5KTV1mao5ZBnn8EKtUcDPJEkGViZIjI0Ij9TTI5zgTz4IHOxW33jOdjHKa8CSjM88scelUiC5TNRQ==
 
 prettier@^2.8.4:
   version "2.8.4"
@@ -3987,12 +3999,12 @@ trim-newlines@^3.0.0:
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-3.0.1.tgz#260a5d962d8b752425b32f3a7db0dcacd176c144"
   integrity sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==
 
-ts-morph@^16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-16.0.0.tgz#35caca7c286dd70e09e5f72af47536bf3b6a27af"
-  integrity sha512-jGNF0GVpFj0orFw55LTsQxVYEUOCWBAbR5Ls7fTYE5pQsbW18ssTb/6UXx/GYAEjS+DQTp8VoTw0vqYMiaaQuw==
+ts-morph@17.0.1:
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-17.0.1.tgz#d85df4fcf9a1fcda1b331d52c00655f381c932d1"
+  integrity sha512-10PkHyXmrtsTvZSL+cqtJLTgFXkU43Gd0JCc0Rw6GchWbqKe0Rwgt1v3ouobTZwQzF1mGhDeAlWYBMGRV7y+3g==
   dependencies:
-    "@ts-morph/common" "~0.17.0"
+    "@ts-morph/common" "~0.18.0"
     code-block-writer "^11.0.3"
 
 ts-node@^10.8.1:
@@ -4155,11 +4167,12 @@ validator@^13.7.0:
   resolved "https://registry.yarnpkg.com/validator/-/validator-13.7.0.tgz#4f9658ba13ba8f3d82ee881d3516489ea85c0857"
   integrity sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==
 
-vite-plugin-dts@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-dts/-/vite-plugin-dts-1.7.1.tgz#7090237333a023a78bbcf7ce8e042531422f233a"
-  integrity sha512-2oGMnAjcrZN7jM1TloiS1b1mCn42s3El04ix2RFhId5P1WfMigF8WAwsqT6a6jk0Yso8t7AeZsBkkxYShR0hBQ==
+vite-plugin-dts@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-dts/-/vite-plugin-dts-2.0.2.tgz#ecee6198830012ed3e741ad9c1c5223f99e49546"
+  integrity sha512-i3HBlrdqE2FQxQqrNwFj9P2ei/I7lt/d3Q8NOE1JCz/gNYhNf/oUeIJamIdWQUNQGhUd/Y6mtpm3kOYPw1gz8Q==
   dependencies:
+    "@babel/parser" "^7.20.15"
     "@microsoft/api-extractor" "^7.33.5"
     "@rollup/pluginutils" "^5.0.2"
     "@rushstack/node-core-library" "^3.53.2"
@@ -4167,7 +4180,8 @@ vite-plugin-dts@^1.7.1:
     fast-glob "^3.2.12"
     fs-extra "^10.1.0"
     kolorist "^1.6.0"
-    ts-morph "^16.0.0"
+    magic-string "^0.29.0"
+    ts-morph "17.0.1"
 
 vite@^4.0.0, vite@^4.0.4:
   version "4.0.4"
