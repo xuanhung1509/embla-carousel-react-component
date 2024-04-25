@@ -15,11 +15,13 @@
     "embla-carousel-react-component": "*",
     "embla-carousel-wheel-gestures": "^3.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "@types/react-syntax-highlighter": "^15.5.11",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
     "eslint-config-custom": "*",
